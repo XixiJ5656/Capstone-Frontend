@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./components/navcomponents/Navbar";
+import Navigation from "./components/Navigation";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navigation />
         <div className="container mt-3">
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />

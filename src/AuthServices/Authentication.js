@@ -27,7 +27,6 @@ class Authentication {
       username,
       email,
       password,
-      comfirmPassword,
     });
   }
 
