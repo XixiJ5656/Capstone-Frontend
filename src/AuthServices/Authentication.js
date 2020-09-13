@@ -2,37 +2,39 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/api/auth/";
 
-class Authentication {
-  signin(username, password) {
-    return axios
-      .post(API_URL + "signin", {
-        username,
-        password,
-      })
-      .then((response) => {
-        if (response.data.accessToken) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
-
-        return response.data;
-      });
-  }
-
-  signout() {
-    localStorage.removeItem("user");
-  }
-
-  register(username, email, password) {
-    return axios.post(API_URL + "register", {
+const register = (username, email, password) => {
+  return axios.post(API_URL + "register", {
+    username,
+    email,
+    password,
+  });
+};
+const signin = (username, password) => {
+  return axios
+    .post(API_URL + "signin", {
       username,
-      email,
       password,
+    })
+    .then((response) => {
+      if (response.data.accessToken) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+      }
+
+      return response.data;
     });
-  }
+};
 
-  getCurrentUser() {
-    return JSON.parse(localStorage.getItem("user"));
-  }
-}
+const signout = () => {
+  localStorage.removeItem("user");
+};
 
-export default new Authentication();
+const getCurrentUser = () => {
+  return JSON.parse(localStorage.getItem("user"));
+};
+
+export default {
+  register,
+  signin,
+  signout,
+  getCurrentUser,
+};

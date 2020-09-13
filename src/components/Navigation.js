@@ -6,14 +6,12 @@ import BeforeAuth from "../AuthServices/BeforeAuth";
 const Navigation = () => {
   const [navBackground, setNavBackground] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
-  const [moderatorBoard, setModeratorBoard] = useState(false);
   const [adminBoard, setAdminBoard] = useState(false);
 
   useEffect(() => {
     const user = Authentication.getCurrentUser();
     if (user) {
       setCurrentUser(user);
-      setModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
       setAdminBoard(user.roles.includes("ROLE_ADMIN"));
     }
   }, []);
@@ -41,41 +39,23 @@ const Navigation = () => {
         transition: "100ms ease",
       }}
     >
-      <Link to={"/"} className="navbar-brand">
-        Warmyi
-      </Link>
-      <div className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <Link to={"/home"} className="nav-link">
-            Home
-          </Link>
-        </li>
-        {currentUser && (
-          <Link to={"/user"} className="nav-link">
-            User
-          </Link>
-        )}
+      <Link to={"/"}>Warmyi</Link>
+      <div>
+        <NavLink to={"/home"} c>
+          HOME
+        </NavLink>
+        <NavLink to={"/shop"}>SHOP</NavLink>
 
-        {moderatorBoard && (
-          <NavLink to={"/moderator"} className="nav-link">
-            Moderator DashBoard
-          </NavLink>
-        )}
+        {currentUser && <NavLink to={"/user"}>USER VIEW</NavLink>}
 
-        {adminBoard && (
-          <NavLink to={"/admin"} className="nav-link">
-            Admin DashBoard
-          </NavLink>
-        )}
+        {adminBoard && <NavLink to={"/admin"}>Admin DashBoard</NavLink>}
       </div>
-
+      <NavLink to={"/cart"}>CART</NavLink>
       {!currentUser ? (
         <BeforeAuth />
       ) : (
         <div className="navbar-nav ml-auto">
-          <NavLink to={"/profile"} className="nav-link">
-            {currentUser.username}
-          </NavLink>
+          <NavLink to={"/userinfo"}>{currentUser.username}</NavLink>
           <a href="/signin" className="nav-link" onClick={signOut}>
             SIGN OUT
           </a>
