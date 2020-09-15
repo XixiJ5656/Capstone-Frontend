@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Authentication from "../AuthServices/Authentication";
 import BeforeAuth from "../AuthServices/BeforeAuth";
+import "../App.css";
 
 const Navigation = () => {
   const [navBackground, setNavBackground] = useState(false);
@@ -35,28 +36,31 @@ const Navigation = () => {
     <nav
       className="navbar"
       style={{
-        backgroundColor: navBackground ? "black" : "transparent",
+        backgroundColor: navBackground ? "white" : "transparent",
         transition: "100ms ease",
       }}
     >
-      <Link to={"/"}>Warmyi</Link>
-      <div>
-        <NavLink to={"/home"} c>
-          HOME
-        </NavLink>
-        <NavLink to={"/shop"}>SHOP</NavLink>
+      <Link to={"/"}>WY</Link>
+      <ul className="navigation">
+        <li>
+          <NavLink to={"/home"}>HOME</NavLink>
+        </li>
+        <li>
+          <NavLink to={"/shop"}>SHOP</NavLink>
+        </li>
+        <li>
+          <NavLink to={"/cart"}>CART</NavLink>
+        </li>
+      </ul>
 
-        {currentUser && <NavLink to={"/user"}>USER VIEW</NavLink>}
-
-        {adminBoard && <NavLink to={"/admin"}>Admin DashBoard</NavLink>}
-      </div>
-      <NavLink to={"/cart"}>CART</NavLink>
       {!currentUser ? (
         <BeforeAuth />
       ) : (
-        <div className="navbar-nav ml-auto">
+        <div className="auth-navigation">
+          {currentUser && <NavLink to={"/user"}>USER VIEW</NavLink>}
+          {adminBoard && <NavLink to={"/admin"}>Admin DashBoard</NavLink>}
           <NavLink to={"/userinfo"}>{currentUser.username}</NavLink>
-          <a href="/signin" className="nav-link" onClick={signOut}>
+          <a href="/home" className="nav-link" onClick={signOut}>
             SIGN OUT
           </a>
         </div>
