@@ -1,0 +1,20 @@
+.navbar {
+  padding: 20px;
+  height: 7vh;
+  width: 100vw;
+
+  color: white;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+.navigation li {
+  margin-right: 10pt;
+  list-style-type: none;
+}
+.auth-navigation {
+  display: flex;
+}

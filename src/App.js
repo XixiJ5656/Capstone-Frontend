@@ -6,6 +6,7 @@ import Shop from "./pages/Shop";
 import Signin from "./pages/Signin";
 import Register from "./pages/Register";
 import UserInfo from "./UserMode/UserInfo";
+import ProductDetails from "./components/ProductDetails";
 
 const App = () => {
   return (
@@ -14,11 +15,12 @@ const App = () => {
         <Navigation />
         <div>
           <Switch>
-            <Route exact path={["/", "/home"]} component={Home} />
+            <Route path="/product/:id" component={ProductDetails} />
             <Route exact path="/shop" component={Shop} />
             <Route exact path="/signin" component={Signin} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/userinfo" component={UserInfo} />
+            <Route exact path={["/", "/home"]} component={Home} />
           </Switch>
         </div>
       </div>
