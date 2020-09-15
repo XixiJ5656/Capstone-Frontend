@@ -1,33 +1,43 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import productActions from "../actions/productActions";
+import { Link } from "react-router-dom";
 
-const ProductDetails = (props) => {
-  console.log(props.match.params);
-  const [products, setProducts] = useState([]);
+const ProductDetailPage = (props) => {
+  console.log(props.match.params.id);
+  const productDetail = useSelector((state) => state.productDetail);
+  const { product, loading, error } = productDetail;
+
+  const dispatch = useDispatch();
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/app/products")
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((error) => {
-        return error;
-      });
+    dispatch(productActions.showProductDetail(props.match.params.id));
+    return () => {};
   }, []);
 
-  const product = products.find((item) => item.id == props.match.params.id);
-  console.log(product);
-  return (
+  return loading ? (
+    <div>loading...</div>
+  ) : error ? (
+    <div>{error}</div>
+  ) : (
     <div className="product-details">
-      <img src="" alt="product" />
+      <div>
+        <img src={product.image[0]} alt="product" />
+        <img src={product.image[1]} alt="product" />
+      </div>
+
       <ul className="product-info">
-        <li>product name</li>
-        <li> available color</li>
-        <li> avalilabe size</li>
-        <li>product discription</li>
+        <li>{product.name}</li>
+
+        <li>{product.description}</li>
       </ul>
+      <div>
+        <img src={product.image[2]} alt="product" />
+        <img src={product.image[3]} alt="product" />
+      </div>
       <ul className="product-actions">
-        <li>price:product price</li>
+        <li>PRICE:${product.price}</li>
+        <li>Select Your Size {product.size}</li>
+        <li>Select Your Color {product.color}</li>
         <li>
           Qty:{" "}
           <select>
@@ -40,10 +50,13 @@ const ProductDetails = (props) => {
         </li>
         <li>
           <button>Add To Cart</button>
+          <Link to="/shop">
+            <button>Back to Shop</button>
+          </Link>
         </li>
       </ul>
     </div>
   );
 };
 
-export default ProductDetails;
+export default ProductDetailPage;
