@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 const BeforeAuth = () => {
   return (
-    <div className="navbar-nav ml-auto">
+    <div className="auth-navigation">
       <NavLink to={"/signin"} className="nav-link">
         SIGN IN
       </NavLink>
