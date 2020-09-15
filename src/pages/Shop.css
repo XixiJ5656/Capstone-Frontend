@@ -1,4 +1,45 @@
 .shop-page {
+  padding-top: 200px;
   height: auto;
   width: 100vw;
+}
+
+.register-page {
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(
+    to top,
+    rgb(166, 181, 228),
+    rgb(221, 217, 212)
+  );
+  color: white;
+}
+.register-form {
+  height: 50vh;
+  width: 25vw;
+  position: relative;
+  text-align: center;
+  padding-top: 30vh;
+  display: block;
+  margin: auto;
+}
+.signin-page {
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(
+    to top,
+    rgb(166, 181, 228),
+    rgb(221, 217, 212)
+  );
+  color: white;
+}
+
+.signin-form {
+  height: 50vh;
+  width: 25vw;
+  position: relative;
+  text-align: center;
+  padding-top: 30vh;
+  display: block;
+  margin: auto;
 }
