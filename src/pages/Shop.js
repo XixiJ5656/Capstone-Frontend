@@ -5,7 +5,8 @@ import productActions from "../actions/productActions";
 import { Link } from "react-router-dom";
 import "./Shop.css";
 
-const Shop = () => {
+const Shop = (props) => {
+  console.log(props);
   const productList = useSelector((state) => state.productList);
   console.log(productList);
   const { products, loading, error } = productList;
@@ -13,9 +14,7 @@ const Shop = () => {
 
   useEffect(() => {
     dispatch(productActions.listProducts());
-
-    return () => {};
-  }, []);
+  }, [dispatch]);
 
   console.log(products);
   return loading ? (
@@ -23,10 +22,10 @@ const Shop = () => {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <ul className="products">
-      {products.map((product) => (
-        <li key={product.id}>
-          <div className="product">
+    <div className="shop-page">
+      <div className="products">
+        {products.map((product) => (
+          <div className="product" key={product.id}>
             <Link to={"/product/" + product.id}>
               <img className="product-image" src={product.image[0]} alt="" />
             </Link>
@@ -35,9 +34,9 @@ const Shop = () => {
             </div>
             <strong>{product.price}</strong>
           </div>
-        </li>
-      ))}
-    </ul>
+        ))}
+      </div>
+    </div>
   );
 };
 

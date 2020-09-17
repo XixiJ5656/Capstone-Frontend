@@ -1,22 +1,22 @@
 import {
-  PRODUCT_FETCH_FAIL,
-  PRODUCT_FETCH_REQUEST,
-  PRODUCT_FETCH_SUCCESS,
+  SHOW_DETAIL_SUCCESS,
+  SHOW_DETAIL_FAIL,
+  SHOW_DETAIL_REQUEST,
 } from "../actions/actionTypes";
 
 const initialState = {
   loading: true,
   hasError: false,
-  product: [],
+  product: {},
 };
 
 const ProductListReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PRODUCT_FETCH_REQUEST:
+    case SHOW_DETAIL_REQUEST:
       return { loading: true };
-    case PRODUCT_FETCH_SUCCESS:
-      return { loading: false, products: action.payload };
-    case PRODUCT_FETCH_FAIL:
+    case SHOW_DETAIL_SUCCESS:
+      return { loading: false, product: action.payload };
+    case SHOW_DETAIL_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

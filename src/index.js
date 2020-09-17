@@ -9,8 +9,12 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/rootReducer";
+import Cookie from "js-cookie";
 
-const initialState = {};
+const cartItems = Cookie.getJSON("cartItems") || [];
+const user = localStorage.getItem("user") || null;
+console.log(user);
+const initialState = { cart: { cartItems }, userSignedIn: { user } };
 const store = createStore(
   rootReducer,
   initialState,

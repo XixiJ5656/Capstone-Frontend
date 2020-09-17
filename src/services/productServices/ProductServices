@@ -1,0 +1,71 @@
+import axios from "axios";
+
+const createProduct = (
+  name,
+  inventory,
+  type,
+  price,
+  size,
+  color,
+  description,
+  image
+) => {
+  return axios.post("http://localhost:8080/api/app/products", {
+    name,
+    inventory,
+    type,
+    price,
+    size,
+    color,
+    description,
+    image,
+  });
+};
+
+const getAllProducts = () => {
+  return axios.get("http://localhost:8080/api/app/products");
+};
+
+const getProductById = (id) => {
+  return axios.get("http://localhost:8080/api/app/products" + id);
+};
+
+const updateProductById = (
+  id,
+  name,
+  inventory,
+  type,
+  price,
+  size,
+  color,
+  description,
+  image
+) => {
+  return axios.put("http://localhost:8080/api/app/products" + id, {
+    name,
+    inventory,
+    type,
+    price,
+    size,
+    color,
+    description,
+    image,
+  });
+};
+
+const deleteAllProducts = () => {
+  return axios.delete("http://localhost:8080/api/app/products");
+};
+
+const deleteProductById = (id) => {
+  return axios.delete("http://localhost:8080/api/app/products" + id);
+};
+
+export default {
+  createProduct,
+  getAllProducts,
+  getProductById,
+  updateProductById,
+  deleteAllProducts,
+  deleteProductById,
+};
