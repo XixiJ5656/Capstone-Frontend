@@ -10,7 +10,7 @@ const initialState = {
   product: [],
 };
 
-const ProductListReducer = (state = initialState, action) => {
+const ProductsFetchReducer = (state = initialState, action) => {
   switch (action.type) {
     case PRODUCT_FETCH_REQUEST:
       return { loading: true };
@@ -23,4 +23,4 @@ const ProductListReducer = (state = initialState, action) => {
   }
 };
 
-export default ProductListReducer;
+export default ProductsFetchReducer;

@@ -9,11 +9,11 @@ import {
   SET_MESSAGE,
 } from "./actionTypes";
 
-import Authentication from "../services/AuthServices/Authentication";
+import authServices from "../services/authServices";
 
 const signin = (username, password) => (dispatch) => {
   dispatch({ type: SIGNIN_REQUEST, payload: { username, password } });
-  return Authentication.signin(username, password).then(
+  return authServices.signin(username, password).then(
     (data) => {
       console.log(data);
       dispatch({ type: SIGNIN_SUCCESS, payload: { user: data } });
@@ -41,7 +41,7 @@ const signout = () => (dispatch) => {
 
 const register = (username, email, password) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST, payload: { username, email, password } });
-  return Authentication.register(username, email, password).then(
+  return authServices.register(username, email, password).then(
     (response) => {
       dispatch({ type: REGISTER_SUCCESS });
       dispatch({ type: SET_MESSAGE, payload: response.data.message });

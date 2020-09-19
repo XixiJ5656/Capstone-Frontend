@@ -3,75 +3,75 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { useDispatch, useSelector } from "react-redux";
+import { isEmail } from "validator";
 import { Link } from "react-router-dom";
-import "./Shop.css";
+
 import authActions from "../actions/authActions";
 
 const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-warning" role="alert">
-        Required Information!
+        This field is required!
       </div>
     );
   }
 };
 
-const CreateProduct = (props) => {
-  console.log(props);
-  const [name, setName] = useState("");
-  const [inventory, setInventory] = useState(0);
-  const [type, setType] = useState("");
-  const [price, setPrice] = useState(0);
-  const [size, setSize] = useState([]);
-  const [color, setColor] = useState([]);
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState([]);
+const validateEmail = (value) => {
+  if (!isEmail(value)) {
+    return (
+      <div className="alert alert-warning" role="alert">
+        This is not a valid email.
+      </div>
+    );
+  }
+};
 
+const validateUername = (value) => {
+  if (value.length < 3 || value.length > 15) {
+    return (
+      <div className="alert alert-warning" role="alert">
+        The username must be between 3 and 15 characters.
+      </div>
+    );
+  }
+};
+
+const validatePassword = (value) => {
+  if (value.length < 7 || value.length > 30) {
+    return (
+      <div className="alert alert-warning" role="alert">
+        The password must be between 7 and 30 characters.
+      </div>
+    );
+  }
+};
+
+const Register = (props) => {
+  console.log();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const { message } = useSelector((state) => state.message);
   const dispatch = useDispatch();
   const form = useRef();
   const checkButton = useRef();
 
-  const handleName = (e) => {
-    const name = e.target.value;
-    setName(name);
+  const handleUsername = (e) => {
+    const username = e.target.value;
+    setUsername(username);
   };
 
-  const handleInventory = (e) => {
-    const inventory = e.target.value;
-    setInventory(inventory);
+  const handleEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email);
   };
 
-  const handleType = (e) => {
-    const type = e.target.value;
-    setType(type);
-  };
-
-  const handlePrice = (e) => {
-    const price = e.target.value;
-    setPrice(price);
-  };
-
-  const handleSize = (e) => {
-    const size = e.target.value;
-    setSize(size);
-  };
-
-  const handleColor = (e) => {
-    const color = e.target.value;
-    setColor(color);
-  };
-
-  const handleDescription = (e) => {
-    const description = e.target.value;
-    setDescription(description);
-  };
-
-  const handleImage = (e) => {
-    const iamge = e.target.value;
-    setImage(image);
+  const handlePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
   };
 
   const handleSubmit = (e) => {
@@ -91,11 +91,11 @@ const CreateProduct = (props) => {
     }
   };
   return (
-    <div className="create-product-page">
-      <Form className="product-from" onSubmit={handleSubmit} ref={form}>
+    <div className="register-page">
+      <Form className="register-from" onSubmit={handleSubmit} ref={form}>
         {!successful && (
           <ul>
-            <li>ADD NEW PRODUCT</li>
+            <li>Register Form</li>
             <li>
               <label htmlFor="username">Username</label>
               <Input
@@ -138,7 +138,7 @@ const CreateProduct = (props) => {
         )}
 
         {message && (
-          <div className="form-group">
+          <div>
             <div
               className={
                 successful ? "alert alert-success" : "alert alert-danger"
@@ -159,4 +159,4 @@ const CreateProduct = (props) => {
   );
 };
 
-export default CreateProduct;
+export default Register;

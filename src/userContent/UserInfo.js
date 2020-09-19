@@ -1,8 +1,7 @@
 import React from "react";
-import Authentication from "../AuthServices/Authentication";
-
+import authServices from "../services/authServices";
 const UserInfo = () => {
-  const currentUser = Authentication.getCurrentUser();
+  const currentUser = authServices.getCurrentUser();
 
   return (
     <div className="container">

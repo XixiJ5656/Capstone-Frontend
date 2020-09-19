@@ -9,7 +9,7 @@ import {
   SHOW_DETAIL_FAIL,
 } from "./actionTypes";
 
-const listProducts = () => async (dispatch) => {
+const fetchProducts = () => async (dispatch) => {
   dispatch({ type: PRODUCT_FETCH_REQUEST });
   try {
     const { data } = await axios.get("http://localhost:8080/api/app/products");
@@ -31,4 +31,8 @@ const showProductDetail = (id) => async (dispatch) => {
     dispatch({ type: SHOW_DETAIL_FAIL, payload: error.message });
   }
 };
-export default { listProducts, showProductDetail };
+
+const addProduct = () => async (dispatch) => {
+  //dispatch({type:ADD_PRODUCT_REQUEST})
+};
+export default { fetchProducts, showProductDetail };

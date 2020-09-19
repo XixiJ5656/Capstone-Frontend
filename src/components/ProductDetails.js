@@ -22,11 +22,11 @@ const ProductDetailPage = (props) => {
     props.history.push(
       "/cart/" +
         props.match.params.id +
-        // "?size=" +
-        // size +
-        // "?color=" +
-        // color +
-        "?qty=" +
+        "?size=" +
+        size +
+        "=?color=" +
+        color +
+        "=?qty=" +
         qty
     );
   };

@@ -7,13 +7,13 @@ import "./Shop.css";
 
 const Shop = (props) => {
   console.log(props);
-  const productList = useSelector((state) => state.productList);
-  console.log(productList);
-  const { products, loading, error } = productList;
+  const productsFetch = useSelector((state) => state.productsFetch);
+  console.log(productsFetch);
+  const { products, loading, error } = productsFetch;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(productActions.listProducts());
+    dispatch(productActions.fetchProducts());
   }, [dispatch]);
 
   console.log(products);

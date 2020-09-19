@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import Authentication from "../services/AuthServices/Authentication";
-import BeforeAuth from "./BeforeAuth";
+import authServices from "../services/authServices";
+
 import "../App.css";
 
 const Navigation = () => {
@@ -10,7 +10,7 @@ const Navigation = () => {
   const [adminBoard, setAdminBoard] = useState(false);
 
   useEffect(() => {
-    const user = Authentication.getCurrentUser();
+    const user = authServices.getCurrentUser();
     if (user) {
       setCurrentUser(user);
       setAdminBoard(user.roles.includes("ROLE_ADMIN"));
@@ -29,43 +29,73 @@ const Navigation = () => {
   });
 
   const signOut = () => {
-    Authentication.signout();
+    authServices.signout();
   };
 
   return (
-    <nav
-      className="navbar"
-      style={{
-        backgroundColor: navBackground ? "white" : "transparent",
-        transition: "100ms ease",
-      }}
-    >
-      <Link to={"/"}>WY</Link>
-      <ul className="navigation">
-        <li>
-          <NavLink to={"/home"}>HOME</NavLink>
-        </li>
-        <li>
-          <NavLink to={"/shop"}>SHOP</NavLink>
-        </li>
-        <li>
-          <NavLink to={"/cart"}>CART</NavLink>
-        </li>
-      </ul>
-
+    <div className="navbar">
+      <nav class="nav flex-column">
+        <ul>
+          <li>
+            <Link to={"/"}>WY</Link>
+          </li>
+          <li className="nav-item dropdown">
+            <a
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              className="nav-link dropdown-toggle"
+              id="navbarDropdown"
+              role="button"
+              href="#"
+            >
+              SHOP
+            </a>
+            <div class="dropdown-menu">
+              <Link class="dropdown-item" to={"/shop"}>
+                Shop
+              </Link>
+              <Link class="dropdown-item" to={"/admin"}>
+                Admin
+              </Link>
+              <Link class="dropdown-item" to={"/user"}>
+                User
+              </Link>
+              <div class="dropdown-divider"></div>
+              <Link class="dropdown-item" to={"/user/cart"}>
+                To my Cart
+              </Link>
+            </div>
+          </li>
+          <li>
+            <NavLink to={"/cart"}>CART</NavLink>
+          </li>
+        </ul>
+      </nav>
       {!currentUser ? (
-        <BeforeAuth />
-      ) : (
-        <div className="auth-navigation">
-          {currentUser && <NavLink to={"/user/cart"}>MY CART</NavLink>}
-          {adminBoard && <NavLink to={"/admin"}>Admin DashBoard</NavLink>}
-          <NavLink to={"/user/userinfo"}>{currentUser.username}</NavLink>
-          <a href="/home" className="nav-link" onClick={signOut}>
-            SIGN OUT
-          </a>
+        <div>
+          <NavLink to={"/signin"}>SIGN IN</NavLink>
+          <NavLink to={"/register"}>REGISTER</NavLink>
         </div>
+      ) : (
+        <Link to="/home" className="nav-link" onClick={signOut}>
+          SIGN OUT
+        </Link>
       )}
-    </nav>
+      {currentUser && (
+        <ul>
+          <li>
+            <NavLink to={"/user/cart"}>CART</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/user/userinfo"}>
+              {currentUser.username.toUpperCase()}
+            </NavLink>
+          </li>
+        </ul>
+      )}
+      {adminBoard && <NavLink to={"/admin"}>Admin</NavLink>}
+    </div>
   );
 };
 

@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
-import productListReducer from "./ProductListReducer";
-import productDetailReducer from "./ProductDetailReducer";
+import productsFetchReducer from "./productsFetchReducer";
+import productDetailReducer from "./productDetailReducer";
 import cartReducer from "./cartReducer";
 import authReducer from "./authReducer";
 import messageReducer from "./messageReducer";
 
 const rootReducer = combineReducers({
-  productList: productListReducer,
+  productsFetch: productsFetchReducer,
   productDetail: productDetailReducer,
   cart: cartReducer,
   auth: authReducer,

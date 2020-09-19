@@ -1,15 +1,21 @@
 import React from "react";
 import Navigation from "./navigation/Navigation";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./pages/Home";
-import Shop from "./pages/Shop";
+import Home from "./publicPages/Home";
+import Shop from "./publicPages/Shop";
 import ProductDetails from "./components/ProductDetails";
 import ShoppingCart from "./components/ShoppingCart";
-import Signin from "./pages/Signin";
-import Register from "./pages/Register";
-import UserInfo from "./UserMode/UserInfo";
+import Signin from "./forms/Signin";
+import Register from "./forms/Register";
+import UserInfo from "./userContent/UserInfo";
 import { useSelector } from "react-redux";
-
+import ProductManagement from "./adminContent/ProductManagement";
+import AdminBoard from "./adminContent/AdminBoard";
+import OrderManagement from "./adminContent/OrderManagement";
+import AddProduct from "./adminContent/AddProduct";
+import UpdateProduct from "./adminContent/UpdateProduct";
+import ShippingForm from "./forms/ShippingForm";
+import CheckOut from "./userContent/CheckOut";
 const App = () => {
   const auth = useSelector((state) => state.auth);
   const { isSignedIn } = auth;
@@ -20,6 +26,16 @@ const App = () => {
         <Navigation />
         <div>
           <Switch>
+            <Route
+              path="/admin/product-management"
+              component={ProductManagement}
+            />
+            <Route path="/admin/order-management" component={OrderManagement} />
+            <Route path="/admin/add-product" component={AddProduct} />
+            <Route path="/admin/update-product" component={UpdateProduct} />
+            <Route path="/admin" component={AdminBoard} />
+            <Route path="/user/shipping" component={ShippingForm} />
+            <Route path="/user/checkout" component={CheckOut} />
             <Route path="/product/:id" component={ProductDetails} />
             <Route path="/cart/:id?" component={ShoppingCart} />
             <Route exact path="/shop" component={Shop} />
@@ -29,6 +45,7 @@ const App = () => {
               <Route exact path="/user/userinfo" component={UserInfo} />
               // <Route exact path="/user/*" component={UserDashBoard} />
             )}
+
             <Route exact path="/register" component={Register} />
             <Route exact path={["/", "/home"]} component={Home} />
           </Switch>
