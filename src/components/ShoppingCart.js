@@ -17,12 +17,13 @@ const ShoppingCart = (props) => {
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  console.log(cartItems);
+
   useEffect(() => {
     if (id) {
       dispatch(cartActions.addToCart(id, qty, size, color));
     }
   }, [dispatch]);
+
   const removeItem = (id) => {
     dispatch(cartActions.removeFromCart(id));
   };
@@ -47,7 +48,6 @@ const ShoppingCart = (props) => {
             <th scope="col">Price</th>
             <th scope="col">Color</th>
             <th scope="col">Size</th>
-
             <th scope="col">Quantity</th>
             <th scope="col">Totoal Price For This Item</th>
             <th></th>
@@ -90,7 +90,7 @@ const ShoppingCart = (props) => {
                   </select>
                 </td>
 
-                <td>${item.price * item.qty}</td>
+                <td>${(item.price * item.qty).toFixed(2)}</td>
                 <td>
                   <button
                     className="btn btn-outline-danger btn-sm"
@@ -105,11 +105,15 @@ const ShoppingCart = (props) => {
         )}
       </table>
       <div className="d-flex justify-content-between mt-5">
-        {/* <h3>
+        <h3>
           Subtotal ({" "}
-          {cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)} items)
-          : $ {(cartItems.reduce((a, c) => parseInt(a + c.price * c.qty)), 0)}
-        </h3> */}
+          {cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)} Items)
+          : ${" "}
+          {cartItems.reduce(
+            (a, c) => (parseFloat(a) + parseFloat(c.price * c.qty)).toFixed(2),
+            0
+          )}
+        </h3>
 
         <button
           onClick={() =>

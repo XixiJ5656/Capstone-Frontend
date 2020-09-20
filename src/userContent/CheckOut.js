@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import cartActions from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
@@ -68,7 +67,8 @@ const Checkout = (props) => {
         {!successful && (
           <div>
             <h1>Shipping</h1>
-            <>
+
+            <div>
               <label htmlFor="address">Address</label>
               <Input
                 type="text"
@@ -77,7 +77,8 @@ const Checkout = (props) => {
                 onChange={handleInputChange}
                 validations={[required]}
               />
-            </>
+            </div>
+
             <div>
               <label htmlFor="city">City</label>
               <Input

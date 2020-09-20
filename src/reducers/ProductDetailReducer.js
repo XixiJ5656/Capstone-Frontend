@@ -13,11 +13,11 @@ const initialState = {
 const ProductDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_DETAIL_REQUEST:
-      return { loading: true };
+      return { ...state, loading: true };
     case SHOW_DETAIL_SUCCESS:
-      return { loading: false, product: action.payload };
+      return { ...state, loading: false, product: action.payload };
     case SHOW_DETAIL_FAIL:
-      return { loading: false, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }
