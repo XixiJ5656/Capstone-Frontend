@@ -49,39 +49,40 @@ const validatePassword = (value) => {
 };
 
 const Register = (props) => {
-  console.log();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  console.log(props);
+
+  const initialUserState = {
+    id: null,
+    username: "",
+    email: "",
+    password: "",
+  };
+  const [user, setUser] = useState(initialUserState);
   const [successful, setSuccessful] = useState(false);
   const { message } = useSelector((state) => state.message);
+  const auth = useSelector((state) => state.auth);
+  console.log(auth);
   const dispatch = useDispatch();
   const form = useRef();
   const checkButton = useRef();
 
-  const handleUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
-  };
-
-  const handleEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-  };
-
-  const handlePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSuccessful(false);
-
     form.current.validateAll();
-
+    const data = {
+      username: user.username,
+      email: user.email,
+      password: user.password,
+    };
+    console.log(data);
     if (checkButton.current.context._errors.length === 0) {
-      dispatch(authActions.register(username, email, password))
+      dispatch(authActions.register(data))
         .then(() => {
           setSuccessful(true);
         })
@@ -90,6 +91,7 @@ const Register = (props) => {
         });
     }
   };
+
   return (
     <div className="register-page">
       <Form className="register-from" onSubmit={handleSubmit} ref={form}>
@@ -102,8 +104,8 @@ const Register = (props) => {
                 type="text"
                 className="form-control"
                 name="username"
-                value={username}
-                onChange={handleUsername}
+                value={user.username}
+                onChange={handleInputChange}
                 validations={[required, validateUername]}
               />
             </li>
@@ -113,8 +115,8 @@ const Register = (props) => {
                 type="text"
                 className="form-control"
                 name="email"
-                value={email}
-                onChange={handleEmail}
+                value={user.email}
+                onChange={handleInputChange}
                 validations={[required, validateEmail]}
               />
             </li>
@@ -124,8 +126,8 @@ const Register = (props) => {
                 type="password"
                 className="form-control"
                 name="password"
-                value={password}
-                onChange={handlePassword}
+                value={user.password}
+                onChange={handleInputChange}
                 validations={[required, validatePassword]}
               />
             </li>
@@ -151,10 +153,10 @@ const Register = (props) => {
         )}
         <CheckButton style={{ display: "none" }} ref={checkButton} />
         <div>ALREADY HAVE AN ACCOUNT, PLEASE SIGN IN HERE</div>
-        <Link to="/signin">
-          <button>Sign In</button>
-        </Link>
       </Form>
+      <Link to="/signin">
+        <button>Sign In</button>
+      </Link>
     </div>
   );
 };

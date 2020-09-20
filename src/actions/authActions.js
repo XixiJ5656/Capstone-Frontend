@@ -39,9 +39,31 @@ const signout = () => (dispatch) => {
   dispatch({ type: SIGNOUT });
 };
 
-const register = (username, email, password) => async (dispatch) => {
-  dispatch({ type: REGISTER_REQUEST, payload: { username, email, password } });
-  return authServices.register(username, email, password).then(
+// const register = (username, email, password) => async (dispatch) => {
+//   dispatch({ type: REGISTER_REQUEST, payload: { username, email, password } });
+//   return authServices.register(username, email, password).then(
+//     (response) => {
+//       dispatch({ type: REGISTER_SUCCESS });
+//       dispatch({ type: SET_MESSAGE, payload: response.data.message });
+//       return Promise.resolve();
+//     },
+//     (error) => {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString();
+//       dispatch({ type: REGISTER_FAIL });
+//       dispatch({ type: SET_MESSAGE, payload: message });
+//       return Promise.reject();
+//     }
+//   );
+// };
+
+const register = (data) => async (dispatch) => {
+  dispatch({ type: REGISTER_REQUEST, payload: data });
+  return authServices.register(data).then(
     (response) => {
       dispatch({ type: REGISTER_SUCCESS });
       dispatch({ type: SET_MESSAGE, payload: response.data.message });

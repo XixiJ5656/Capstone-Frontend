@@ -1,3 +1,21 @@
-* {
+/* * {
   background-color: rgb(247, 246, 244);
+  z-index: -99;
+} */
+
+.checkout-steps {
+  display: flex;
+  justify-content: space-between;
+  width: 40rem;
+  margin: 1rem auto;
+}
+.checkout-steps div {
+  border-top: 0.3rem solid green;
+  color: rgb(101, 206, 4);
+  text-decoration: none;
+}
+
+.checkout-steps div.active {
+  border-top: 0.3rem solid rgb(182, 12, 105);
+  color: orange;
 }

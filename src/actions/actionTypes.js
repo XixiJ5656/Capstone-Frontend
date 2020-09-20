@@ -19,3 +19,6 @@ export const SIGNOUT = "SIGNOUT";
 
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+
+export const SAVE_SHIPPING = "SAVE_SHIPPING";
+export const SAVE_PAYMENT = "SAVE_PAYMENT";

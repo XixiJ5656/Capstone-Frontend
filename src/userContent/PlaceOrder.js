@@ -2,43 +2,53 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cartActions from "../actions/cartActions";
 import { Link } from "react-router-dom";
+import CheckoutSteps from "../components/CheckoutSteps";
 
-const ShoppingCart = (props) => {
+const PlaceOrder = (props) => {
   console.log(props);
   const dispatch = useDispatch();
-  const id = props.match.params.id;
-  const itemInfoArray = props.location.search.split("=");
-  const { isSignedIn } = useSelector((state) => state.auth);
-  const size =
-    itemInfoArray[1] === "" ? "Please Choose Your Size" : itemInfoArray[1];
-  const color =
-    itemInfoArray[3] === "" ? "Please Choose Your Color" : itemInfoArray[3];
-  const qty = itemInfoArray[5] === "undefined" ? 1 : Number(itemInfoArray[5]);
+  useEffect(() => {});
 
   const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
-  console.log(cartItems);
-  useEffect(() => {
-    if (id) {
-      dispatch(cartActions.addToCart(id, qty, size, color));
-    }
-  }, [dispatch]);
+  const { cartItems, shipping, payment } = cart;
+
   const removeItem = (id) => {
     dispatch(cartActions.removeFromCart(id));
   };
 
   return (
     <section className="container mb-1">
-      <div className="d-flex justify-content-end mb-5">
-        <button
-          onClick={() => props.history.push("/shop")}
-          className="btn btn-dark btn-sm"
-        >
-          Continue Shopping -->
-        </button>
+      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
+      <h1>Place Order</h1>
+      <div>
+        <h5>Shipping Address</h5>
+        {shipping ? (
+          <div>
+            {shipping.address},{shipping.city},{shipping.state},
+            {shipping.zipcode},{shipping.country}
+          </div>
+        ) : (
+          <div>
+            <h3>No Address</h3>
+            <button onClick={() => props.hisotry.push("/shipping")}>
+              Add Address
+            </button>
+          </div>
+        )}
       </div>
-      <h2>Shopping Cart</h2>
-
+      <div>
+        <h5>Payment Details</h5>
+        {payment ? (
+          payment.paymentMethod
+        ) : (
+          <div>
+            <h3>No Address</h3>
+            {/* <Link to="/shipping"/>
+              <p>Add Your Address</p>
+            </Link> */}
+          </div>
+        )}
+      </div>
       <table className="table table-light">
         <thead>
           <tr>
@@ -74,21 +84,7 @@ const ShoppingCart = (props) => {
                 <td>${item.price}</td>
                 <td>{item.color}</td>
                 <td>{item.size}</td>
-                <td>
-                  Qty:
-                  <select
-                    value={item.qty}
-                    onChange={(e) =>
-                      dispatch(cartActions.addToCart(item.id, e.target.value))
-                    }
-                  >
-                    {[...Array(item.inventory).keys()].map((index) => (
-                      <option key={index + 1} value={index + 1}>
-                        {index + 1}
-                      </option>
-                    ))}
-                  </select>
-                </td>
+                <td>Qty:{item.qty}</td>
 
                 <td>${item.price * item.qty}</td>
                 <td>
@@ -112,17 +108,15 @@ const ShoppingCart = (props) => {
         </h3> */}
 
         <button
-          onClick={() =>
-            props.history.push(isSignedIn ? "/shipping" : "/signin")
-          }
+          onClick={() => props.history.push("signin?redirect=/checkout")}
           className="btn btn-dark btn-lg"
           disabled={cartItems.length === 0}
         >
-          Check Out
+          Place Order
         </button>
       </div>
     </section>
   );
 };
 
-export default ShoppingCart;
+export default PlaceOrder;

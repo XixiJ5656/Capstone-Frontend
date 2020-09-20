@@ -20,21 +20,22 @@ const Signin = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const auth = useSelector((state) => state.auth);
-  const { isSignedIn } = auth;
+  const { isSignedIn, user } = useSelector((state) => state.auth);
+
   const { message } = useSelector((state) => state.message);
   console.log(message);
   const dispatch = useDispatch();
   const form = useRef();
-  console.log(form);
   const checkButton = useRef();
-  console.log(checkButton);
+  const redirect = props.location.search
+    ? props.location.search.split("=")[1]
+    : "/";
 
   useEffect(() => {
-    if (isSignedIn) {
-      props.history.push("/home");
+    if (user) {
+      props.history.push(redirect);
     }
-  });
+  }, [user]);
 
   const handleUsername = (e) => {
     const username = e.target.value;
@@ -53,7 +54,6 @@ const Signin = (props) => {
     if (checkButton.current.context._errors.length === 0) {
       dispatch(authActions.signin(username, password))
         .then(() => {
-          props.history.push("/user");
           window.location.reload();
         })
         .catch(() => setLoading(false));
@@ -65,7 +65,7 @@ const Signin = (props) => {
     return <Redirect to="/user/userInfo" />;
   }
   return (
-    <div className="signin-page">
+    <div className="d-flex justify-content-center">
       <h2> Sign In</h2>
       <Form onSubmit={handleSubmit} ref={form}>
         <ul>
@@ -111,7 +111,13 @@ const Signin = (props) => {
         <div>
           <p>NEW MEMBER PLEASE REGISTER HERE</p>
           <strong className="btn btn-warning">
-            <Link to={"/register"}>REGISTER</Link>
+            <Link
+              to={
+                redirect === "/" ? "register" : "register?redirect=" + redirect
+              }
+            >
+              REGISTER
+            </Link>
           </strong>
         </div>
       </Form>

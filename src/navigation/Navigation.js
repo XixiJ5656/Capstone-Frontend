@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import authServices from "../services/authServices";
-
+import { useDispatch } from "react-redux";
+import authActions from "../actions/authActions";
 import "../App.css";
 
 const Navigation = () => {
   const [navBackground, setNavBackground] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
   const [adminBoard, setAdminBoard] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const user = authServices.getCurrentUser();
@@ -29,7 +31,7 @@ const Navigation = () => {
   });
 
   const signOut = () => {
-    authServices.signout();
+    dispatch(authActions.signout());
   };
 
   return (
@@ -37,7 +39,7 @@ const Navigation = () => {
       <nav class="nav flex-column">
         <ul>
           <li>
-            <Link to={"/"}>WY</Link>
+            <Link to={"/home"}>WY</Link>
           </li>
           <li className="nav-item dropdown">
             <a
@@ -72,6 +74,15 @@ const Navigation = () => {
           </li>
         </ul>
       </nav>
+
+      {currentUser && (
+        <div>
+          <NavLink to={"/user/userinfo"}>
+            {currentUser.username.toUpperCase()}
+          </NavLink>
+        </div>
+      )}
+      {adminBoard && <NavLink to={"/admin"}>Admin</NavLink>}
       {!currentUser ? (
         <div>
           <NavLink to={"/signin"}>SIGN IN</NavLink>
@@ -82,19 +93,6 @@ const Navigation = () => {
           SIGN OUT
         </Link>
       )}
-      {currentUser && (
-        <ul>
-          <li>
-            <NavLink to={"/user/cart"}>CART</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/user/userinfo"}>
-              {currentUser.username.toUpperCase()}
-            </NavLink>
-          </li>
-        </ul>
-      )}
-      {adminBoard && <NavLink to={"/admin"}>Admin</NavLink>}
     </div>
   );
 };

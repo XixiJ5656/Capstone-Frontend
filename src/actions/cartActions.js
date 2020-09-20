@@ -1,4 +1,9 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "./actionTypes";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  SAVE_SHIPPING,
+  SAVE_PAYMENT,
+} from "./actionTypes";
 import axios from "axios";
 import Cookie from "js-cookie";
 
@@ -34,4 +39,21 @@ const removeFromCart = (id) => (dispatch, getState) => {
   } = getState();
   Cookie.set("cartItems", JSON.stringify(cartItems));
 };
-export default { addToCart, removeFromCart };
+
+const saveShipping = (data) => (dispatch, getState) => {
+  dispatch({ type: SAVE_SHIPPING, payload: data });
+  const {
+    cart: { shipping },
+  } = getState();
+  Cookie.set("shipping", JSON.stringify(shipping));
+};
+
+const savePayment = (data) => (dispatch, getState) => {
+  dispatch({ type: SAVE_PAYMENT, payload: data });
+  const {
+    cart: { payment },
+  } = getState();
+  Cookie.set("payment", JSON.stringify(payment));
+};
+
+export default { addToCart, removeFromCart, saveShipping, savePayment };

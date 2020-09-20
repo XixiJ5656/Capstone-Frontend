@@ -1,15 +1,19 @@
 import axios from "axios";
 
-const register = (username, email, password) => {
-  return axios.post("http://localhost:8080/api/auth/register", {
-    username,
-    email,
-    password,
-  });
+// const register = (username, email, password) => {
+//   return axios.post("http://localhost:8080/api/auth/register", {
+//     username,
+//     email,
+//     password,
+//   });
+// };
+
+const register = (data) => {
+  return axios.post("http://localhost:8080/api/auth/register", data);
 };
 const signin = (username, password) => {
   return axios
-    .post("http://localhost:8080/api/auth/register", {
+    .post("http://localhost:8080/api/auth/signin", {
       username,
       password,
     })

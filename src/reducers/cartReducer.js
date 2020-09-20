@@ -1,4 +1,9 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/actionTypes";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  SAVE_SHIPPING,
+  SAVE_PAYMENT,
+} from "../actions/actionTypes";
 
 const initialState = {
   cartItems: [],
@@ -23,6 +28,10 @@ const cartReducer = (state = initialState, action) => {
       return {
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
       };
+    case SAVE_SHIPPING:
+      return { ...state, shipping: action.payload };
+    case SAVE_PAYMENT:
+      return { ...state, payment: action.payload };
     default:
       return state;
   }

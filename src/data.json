@@ -15,22 +15,7 @@
     "inventory": 20,
     "description": "Knee-length dress in openwork lace made from recycled polyester. Stand-up collar, opening at back of neck with buttons, seam at hips, and flared skirt with asymmetric hem. Long sleeves and overlocked edges at cuffs and hem. Unlined."
   },
-  {
-    "id": 2,
-    "name": "Short Dress",
-    "image": [
-      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/f4/48/f4480e27d3a02e677706ddfd576298485c7e6e9c.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
-      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/9b/73/9b73caab30648cfa087a672255579fd42787aa7a.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
-      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/38/12/3812098dcbc95c2c8246706da52bb3a5fd290a2b.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
-      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/db/4f/db4fffd96c4f9f511e5b273196192c05b75d9480.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[s],hmver[1]&call=url[file:/product/main]"
-    ],
-    "type": "Dress",
-    "price": 17.99,
-    "size": ["XS", "S", "M", "L", "XL"],
-    "color": ["Red", "Black", "White", "Beige"],
-    "inventory": 20,
-    "description": "Short, wide-cut dress in woven fabric. Round neckline, small opening at back of neck with narrow ties, and dropped skirt with gathers for added volume and soft draping. Short puff sleeves with ruffle-trimmed armhole seams and narrow elastic at cuffs."
-  },
+  ,
   {
     "id": 3,
     "name": "Fine-knit Dress",
