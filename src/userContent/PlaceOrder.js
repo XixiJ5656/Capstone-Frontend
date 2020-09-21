@@ -10,31 +10,42 @@ const PlaceOrder = (props) => {
   const initialOrderState = {
     id: null,
     username: "",
-    shipping: {},
-    payment: {},
-    orderItems: [],
-    delivered: false,
+    address: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    country: "",
+
+    // payment: "",
+    // orderItems: [],
+    // delivered: false,
   };
 
   const { cartItems, shipping, payment } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const [order] = useState(initialOrderState);
-  const [successful, setSuccessful] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [message, setMessage] = useState("");
   const dispatch = useDispatch();
 
   const submitOrder = (e) => {
     e.preventDefault();
-    setSuccessful(false);
+    setMessage("");
+    setSubmitted(false);
     const data = {
       username: user.username,
-      shipping: shipping,
-      payment: payment,
-      orderItems: cartItems,
-      delivered: order.delivered,
+      address: shipping.address,
+      city: shipping.city,
+      state: shipping.state,
+      zipcode: shipping.zipcode,
+      country: shipping.country,
+      // orderItems: cartItems,
+      // delivered: order.delivered,
+      // payment: payment,
     };
     console.log(data);
     dispatch(orderActions.saveOrder(data));
-    props.history.push("/order-conformation");
+    props.history.push("/order-confirmation");
   };
 
   return (

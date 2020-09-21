@@ -7,9 +7,8 @@ import "./Shop.css";
 
 const Shop = (props) => {
   console.log(props);
-  const productsFetch = useSelector((state) => state.productsFetch);
-  console.log(productsFetch);
-  const { products, loading, error } = productsFetch;
+  const { products } = useSelector((state) => state.productManage);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,11 +16,7 @@ const Shop = (props) => {
   }, [dispatch]);
 
   console.log(products);
-  return loading ? (
-    <div>loading...</div>
-  ) : error ? (
-    <div>{error}</div>
-  ) : (
+  return (
     <div className="shop-page">
       <div className="products">
         {products.map((product) => (

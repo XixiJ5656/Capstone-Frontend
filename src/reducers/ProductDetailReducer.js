@@ -10,7 +10,7 @@ const initialState = {
   product: {},
 };
 
-const ProductDetailReducer = (state = initialState, action) => {
+const productDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_DETAIL_REQUEST:
       return { ...state, loading: true };
@@ -23,4 +23,4 @@ const ProductDetailReducer = (state = initialState, action) => {
   }
 };
 
-export default ProductDetailReducer;
+export default productDetailReducer;

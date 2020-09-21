@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import productServices from "../services/productServices";
-
+import productActions from "../actions/productActions";
+import { useDispatch } from "react-redux";
 const required = (value) => {
   if (!value) {
     return (
@@ -32,13 +32,14 @@ const AddProduct = (props) => {
   const [message, setMessage] = useState("");
   const form = useRef();
   const checkButton = useRef();
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
   };
 
-  const resetProduct = () => {
+  const resetInput = () => {
     setProduct(() => initialProductState);
   };
 
@@ -49,9 +50,9 @@ const AddProduct = (props) => {
     form.current.validateAll();
     const data = {
       name: product.name,
-      inventory: product.inventory,
+      inventory: Number(product.inventory),
       type: product.type,
-      price: product.price,
+      price: Number(product.price),
       size: product.size,
       color: product.color,
       description: product.description,
@@ -60,24 +61,26 @@ const AddProduct = (props) => {
     console.log(data);
 
     if (checkButton.current.context._errors.length === 0) {
-      productServices.addProduct(data).then(
-        (response) => {
-          setMessage(response.data.message);
-          setSubmitted(true);
-        },
-        (error) => {
-          console.log(error);
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
+      dispatch(productActions.addProduct(data));
+      props.history.push("/admin/product-management");
+      // productServices.addProduct(data).then(
+      //   (response) => {
+      //     setMessage(response.data.message);
+      //     setSubmitted(true);
+      //   },
+      //   (error) => {
+      //     console.log(error);
+      //     const resMessage =
+      //       (error.response &&
+      //         error.response.data &&
+      //         error.response.data.message) ||
+      //       error.message ||
+      //       error.toString();
 
-          setMessage(resMessage);
-          setSubmitted(false);
-        }
-      );
+      //     setMessage(resMessage);
+      //     setSubmitted(false);
+      //   }
+      // );
     }
   };
   return (
@@ -168,9 +171,13 @@ const AddProduct = (props) => {
               />
             </li>
             <li>
-              <button className="btn btn-info btn-block rounded-pill">
-                Submit
+              <button
+                onclick={resetInput}
+                className="btn btn-info rounded-pill"
+              >
+                Reset
               </button>
+              <button className="btn btn-info rounded-pill">Submit</button>
             </li>
           </ul>
         ) : (

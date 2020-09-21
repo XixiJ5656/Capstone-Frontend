@@ -7,7 +7,7 @@ import ProductDetails from "./components/ProductDetails";
 import ShoppingCart from "./components/ShoppingCart";
 import Signin from "./forms/Signin";
 import Register from "./forms/Register";
-import UserInfo from "./userContent/UserInfo";
+import Profile from "./userContent/Profile";
 import { useSelector } from "react-redux";
 import Payment from "./userContent/Payment";
 import PlaceOrder from "./userContent/PlaceOrder";
@@ -16,9 +16,9 @@ import ProductManagement from "./adminContent/ProductManagement";
 import AdminBoard from "./adminContent/AdminBoard";
 import OrderManagement from "./adminContent/OrderManagement";
 import AddProduct from "./adminContent/AddProduct";
-import UpdateProduct from "./adminContent/UpdateProduct";
 
 import Checkout from "./userContent/Checkout";
+import OrderConfirmation from "./userContent/OrderConfirmation";
 const App = () => {
   const auth = useSelector((state) => state.auth);
   const { isSignedIn } = auth;
@@ -35,8 +35,9 @@ const App = () => {
             />
             <Route path="/admin/order-management" component={OrderManagement} />
             <Route path="/admin/add-product" component={AddProduct} />
-            <Route path="/admin/update-product" component={UpdateProduct} />
+
             <Route path="/admin" component={AdminBoard} />
+            <Route path="/order-confirmation" component={OrderConfirmation} />
             <Route path="/payment" component={Payment} />
             <Route path="/placeorder" component={PlaceOrder} />
             <Route path="/shipping" component={Checkout} />
@@ -46,7 +47,7 @@ const App = () => {
             {!isSignedIn ? (
               <Route exact path="/signin" component={Signin} />
             ) : (
-              <Route exact path="/user/userinfo" component={UserInfo} />
+              <Route exact path="/user/userinfo" component={Profile} />
               // <Route exact path="/user/*" component={UserDashBoard} />
             )}
 

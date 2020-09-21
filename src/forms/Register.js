@@ -93,7 +93,7 @@ const Register = (props) => {
   };
 
   return (
-    <div className="register-page">
+    <div className="d-flex justify-content-center">
       <Form className="register-from" onSubmit={handleSubmit} ref={form}>
         {!successful && (
           <ul>
@@ -153,10 +153,10 @@ const Register = (props) => {
         )}
         <CheckButton style={{ display: "none" }} ref={checkButton} />
         <div>ALREADY HAVE AN ACCOUNT, PLEASE SIGN IN HERE</div>
+        <Link to="/signin">
+          <button>Sign In</button>
+        </Link>
       </Form>
-      <Link to="/signin">
-        <button>Sign In</button>
-      </Link>
     </div>
   );
 };

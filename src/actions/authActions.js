@@ -65,7 +65,7 @@ const register = (data) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST, payload: data });
   return authServices.register(data).then(
     (response) => {
-      dispatch({ type: REGISTER_SUCCESS });
+      dispatch({ type: REGISTER_SUCCESS, payload: data });
       dispatch({ type: SET_MESSAGE, payload: response.data.message });
       return Promise.resolve();
     },

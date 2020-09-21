@@ -1,6 +1,7 @@
 import React from "react";
 import authServices from "../services/authServices";
-const UserInfo = () => {
+
+const Profile = () => {
   const currentUser = authServices.getCurrentUser();
 
   return (
@@ -10,17 +11,17 @@ const UserInfo = () => {
           <strong>User Name:</strong>
           {currentUser.username}
         </h3>
+        <ul>
+          {currentUser.roles &&
+            currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
+        </ul>
       </header>
       <p>
         <strong>Email:</strong> {currentUser.email}
       </p>
-      <strong>Authorities:</strong>
-      <ul>
-        {currentUser.roles &&
-          currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-      </ul>
+      <h3>Order History:</h3>
     </div>
   );
 };
 
-export default UserInfo;
+export default Profile;

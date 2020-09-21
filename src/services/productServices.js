@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const addProduct = (product) => {
-  return axios.post("http://localhost:8080/api/app/products", product);
+const addProduct = (data) => {
+  return axios.post("http://localhost:8080/api/app/products", data);
 };
 
-const getAllProducts = () => {
+const fetchProducts = () => {
   return axios.get("http://localhost:8080/api/app/products");
 };
 
@@ -12,8 +12,8 @@ const getProductById = (id) => {
   return axios.get("http://localhost:8080/api/app/products" + id);
 };
 
-const updateProductById = (id, product) => {
-  return axios.put("http://localhost:8080/api/app/products" + id, product);
+const updateProductById = (id, data) => {
+  return axios.put("http://localhost:8080/api/app/products" + id, data);
 };
 
 const deleteAllProducts = () => {
@@ -26,7 +26,7 @@ const deleteProductById = (id) => {
 
 export default {
   addProduct,
-  getAllProducts,
+  fetchProducts,
   getProductById,
   updateProductById,
   deleteAllProducts,

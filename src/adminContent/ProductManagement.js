@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import productActions from "../actions/productActions";
 import Pagination from "../components/Pagination";
 // import paginate from "../utils/paginate";
 
 const ProductManagement = (props) => {
-  console.log(props);
-  const productsFetch = useSelector((state) => state.productsFetch);
-  const { products, loading, error } = productsFetch;
+  const { products } = useSelector((state) => state.productManage);
+
+  const [submitted, setSubmitted] = useState(false);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(5);
@@ -15,27 +16,43 @@ const ProductManagement = (props) => {
     dispatch(productActions.fetchProducts());
   }, [dispatch]);
 
-  const handleDelete = (product) => {
-    console.log(product);
+  const handleEdit = (id) => {
+    console.log(id);
+    // productServices.editProduct(data).then(
+    //   (response) => {
+    //     setMessage(response.data.message);
+    //     setSubmitted(true);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //     const resMessage =
+    //       (error.response &&
+    //         error.response.data &&
+    //         error.response.data.message) ||
+    //       error.message ||
+    //       error.toString();
+    //     setMessage(resMessage);
+    //     setSubmitted(false);
+    //   }
+    // );
   };
 
-  const handlePageChange = (pageNum) => {
-    setCurrentPage(pageNum);
+  const handleDelete = (id) => {
+    console.log(id);
+    dispatch(productActions.deleteProductById(id));
   };
 
+  // const handlePageChange = (pageNum) => {
+  //   setCurrentPage(pageNum);
+  // };
   // const indexOfLastProduct = currentPage * productsPerPage;
   // const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  console.log(products);
   // const currentProducts = products.slice(
   //   indexOfFirstProduct,
   //   indexOfLastProduct
   // );
 
-  return loading ? (
-    <div>loading...</div>
-  ) : error ? (
-    <div>{error}</div>
-  ) : (
+  return (
     <div className="table-responsive-md mx-3">
       <h1 className="d-flex justify-content-center my-4">Product Management</h1>
       <div className="d-flex justify-content-between my-4">
@@ -91,11 +108,16 @@ const ProductManagement = (props) => {
               <td>{product.description}</td>
               <td>{product.inventory}</td>
               <td>
-                <button className="btn btn-outline-info btn-sm">Edit</button>
+                <button
+                  onClick={() => handleEdit(product)}
+                  className="btn btn-outline-info btn-sm"
+                >
+                  Edit
+                </button>
               </td>
               <td>
                 <button
-                  onClick={() => handleDelete(product)}
+                  onClick={() => handleDelete(product.id)}
                   className="btn btn-outline-danger btn-sm"
                 >
                   Delete

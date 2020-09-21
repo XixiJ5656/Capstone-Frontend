@@ -1,26 +1,23 @@
 import {
-  PRODUCT_FETCH_FAIL,
-  PRODUCT_FETCH_REQUEST,
-  PRODUCT_FETCH_SUCCESS,
+  FETCH_PRODUCT_FAIL,
+  FETCH_PRODUCT_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialState = {
   loading: true,
-  hasError: false,
-  product: [],
+  error: false,
+  products: [],
 };
 
-const ProductsFetchReducer = (state = initialState, action) => {
+const productsFetchReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PRODUCT_FETCH_REQUEST:
-      return { ...state, loading: true };
-    case PRODUCT_FETCH_SUCCESS:
+    case FETCH_PRODUCT_SUCCESS:
       return { ...state, loading: false, products: action.payload };
-    case PRODUCT_FETCH_FAIL:
+    case FETCH_PRODUCT_FAIL:
       return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }
 };
 
-export default ProductsFetchReducer;
+export default productsFetchReducer;
