@@ -29,22 +29,82 @@ const AddProduct = (props) => {
 
   const [product, setProduct] = useState(initialProductState);
   const [submitted, setSubmitted] = useState(false);
+  const [sizeArr, setSizeArr] = useState([""]);
+  const [colorArr, setColorArr] = useState([""]);
+  const [imageArr, setImageArr] = useState([""]);
   const [message, setMessage] = useState("");
   const form = useRef();
   const checkButton = useRef();
   const dispatch = useDispatch();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleAddSize = () => {
+    const values = [...sizeArr];
+    values.push("");
+    setSizeArr(values);
+  };
+  const handleAddColor = () => {
+    const values = [...colorArr];
+    values.push("");
+    setColorArr(values);
+  };
+  const handleAddImage = () => {
+    const values = [...imageArr];
+    values.push("");
+    setImageArr(values);
+  };
+
+  const handleRemoveSize = (index) => {
+    const values = [...sizeArr];
+    values.splice(index, 1);
+    setSizeArr(values);
+  };
+  const handleRemoveColor = (index) => {
+    const values = [...colorArr];
+    values.splice(index, 1);
+    setColorArr(values);
+  };
+  const handleRemoveImage = (index) => {
+    const values = [...imageArr];
+    values.splice(index, 1);
+    setImageArr(values);
+  };
+
+  const handleSizeInput = (index, event) => {
+    const values = [...sizeArr];
+    values[index] = event.target.value;
+    setSizeArr(values);
+  };
+  const handleColorInput = (index, event) => {
+    const values = [...colorArr];
+    values[index] = event.target.value;
+    setColorArr(values);
+  };
+  const handleImageInput = (index, event) => {
+    const values = [...imageArr];
+    values[index] = event.target.value;
+    setImageArr(values);
+  };
+
+  const handleSizeSave = (event) => {
+    event.preventDefault();
+    setProduct({ ...product, size: sizeArr });
+  };
+  const handleColorSave = (event) => {
+    event.preventDefault();
+    setProduct({ ...product, color: colorArr });
+  };
+  const handleImageSave = (event) => {
+    setProduct({ ...product, image: imageArr });
+    event.preventDefault();
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
     setProduct({ ...product, [name]: value });
   };
 
-  const resetInput = () => {
-    setProduct(() => initialProductState);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setMessage("");
     setSubmitted(false);
     form.current.validateAll();
@@ -63,24 +123,6 @@ const AddProduct = (props) => {
     if (checkButton.current.context._errors.length === 0) {
       dispatch(productActions.addProduct(data));
       props.history.push("/admin/product-management");
-      // productServices.addProduct(data).then(
-      //   (response) => {
-      //     setMessage(response.data.message);
-      //     setSubmitted(true);
-      //   },
-      //   (error) => {
-      //     console.log(error);
-      //     const resMessage =
-      //       (error.response &&
-      //         error.response.data &&
-      //         error.response.data.message) ||
-      //       error.message ||
-      //       error.toString();
-
-      //     setMessage(resMessage);
-      //     setSubmitted(false);
-      //   }
-      // );
     }
   };
   return (
@@ -106,7 +148,7 @@ const AddProduct = (props) => {
                 name="inventory"
                 value={product.inventory}
                 onChange={handleInputChange}
-                // validations={[required]}
+                validations={[required]}
               />
             </li>
             <li>
@@ -126,39 +168,116 @@ const AddProduct = (props) => {
                 name="price"
                 value={product.price}
                 onChange={handleInputChange}
-                // validations={[required]}
+                validations={[required]}
               />
             </li>
             <li>
-              <label htmlFor="size">Size</label>
-              <Input
-                type="text"
-                name="size"
-                value={product.size}
-                onChange={handleInputChange}
-                // validations={[required]}
-              />
+              {sizeArr.map((size, index) => (
+                <div key={index}>
+                  <div>
+                    <label htmlFor="size">size</label>
+                    <input
+                      type="text"
+                      id="size"
+                      name="size"
+                      value={size}
+                      onChange={(event) => handleSizeInput(index, event)}
+                    />
+                  </div>
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveSize(index)}
+                    >
+                      -
+                    </button>
+                    <button type="button" onClick={() => handleAddSize()}>
+                      +
+                    </button>
+                  </div>
+                </div>
+              ))}
+
+              <button onClick={handleSizeSave}>Save</button>
             </li>
             <li>
-              <label htmlFor="color">Color</label>
-              <Input
-                type="text"
-                name="color"
-                value={product.color}
-                onChange={handleInputChange}
-                // validations={[required]}
-              />
+              {colorArr.map((color, index) => (
+                <div key={index}>
+                  <div className="form-group col-sm-6">
+                    <label htmlFor="color">color</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="color"
+                      value={color}
+                      onChange={(event) => handleColorInput(index, event)}
+                    />
+                  </div>
+                  <div className="form-group col-sm-2">
+                    <button
+                      className="btn btn-link"
+                      type="button"
+                      onClick={() => handleRemoveColor(index)}
+                    >
+                      -
+                    </button>
+                    <button
+                      className="btn btn-link"
+                      type="button"
+                      onClick={() => handleAddColor()}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              ))}
+              <button
+                onClick={handleColorSave}
+                className="btn btn-primary mr-2"
+              >
+                Save
+              </button>
             </li>
             <li>
-              <label htmlFor="image">Image</label>
-              <Input
-                type="text"
-                name="image"
-                value={product.image}
-                onChange={handleInputChange}
-                // validations={[required]}
-              />
+              {imageArr.map((image, index) => (
+                <div key={index}>
+                  <div className="form-group col-sm-6">
+                    <label htmlFor="image">image</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="image"
+                      value={image}
+                      onChange={(event) => handleImageInput(index, event)}
+                    />
+                  </div>
+                  <div className="form-group col-sm-2">
+                    <button
+                      className="btn btn-link"
+                      type="button"
+                      onClick={() => handleRemoveImage(index)}
+                    >
+                      -
+                    </button>
+                    <button
+                      className="btn btn-link"
+                      type="button"
+                      onClick={() => handleAddImage()}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              ))}
+
+              <button
+                onClick={handleImageSave}
+                className="btn btn-primary mr-2"
+              >
+                Save
+              </button>
             </li>
+
             <li>
               <label htmlFor="Description">Description</label>
               <br />
@@ -170,13 +289,8 @@ const AddProduct = (props) => {
                 validations={[required]}
               />
             </li>
+
             <li>
-              <button
-                onclick={resetInput}
-                className="btn btn-info rounded-pill"
-              >
-                Reset
-              </button>
               <button className="btn btn-info rounded-pill">Submit</button>
             </li>
           </ul>
