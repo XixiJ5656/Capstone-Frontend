@@ -16,7 +16,6 @@ const required = (value) => {
 
 const AddProduct = (props) => {
   const initialProductState = {
-    id: null,
     name: "",
     inventory: 0,
     type: "",
@@ -134,6 +133,7 @@ const AddProduct = (props) => {
             <li>
               <label htmlFor="name">Product Name</label>
               <Input
+                id="name"
                 type="text"
                 name="name"
                 value={product.name}
@@ -144,6 +144,7 @@ const AddProduct = (props) => {
             <li>
               <label htmlFor="inventory">Inventory</label>
               <Input
+                id="inventory"
                 type="number"
                 name="inventory"
                 value={product.inventory}
@@ -154,6 +155,7 @@ const AddProduct = (props) => {
             <li>
               <label htmlFor="type">Type</label>
               <Input
+                id="type"
                 type="text"
                 name="type"
                 value={product.type}
@@ -164,6 +166,7 @@ const AddProduct = (props) => {
             <li>
               <label htmlFor="price">Price</label>
               <Input
+                id="price"
                 type="number"
                 name="price"
                 value={product.price}
@@ -176,11 +179,12 @@ const AddProduct = (props) => {
                 <div key={index}>
                   <div>
                     <label htmlFor="size">size</label>
-                    <input
-                      type="text"
+                    <Input
                       id="size"
+                      type="text"
                       name="size"
                       value={size}
+                      validations={[required]}
                       onChange={(event) => handleSizeInput(index, event)}
                     />
                   </div>
@@ -205,11 +209,12 @@ const AddProduct = (props) => {
                 <div key={index}>
                   <div className="form-group col-sm-6">
                     <label htmlFor="color">color</label>
-                    <input
+                    <Input
                       type="text"
                       className="form-control"
                       name="color"
                       value={color}
+                      validations={[required]}
                       onChange={(event) => handleColorInput(index, event)}
                     />
                   </div>
@@ -243,11 +248,13 @@ const AddProduct = (props) => {
                 <div key={index}>
                   <div className="form-group col-sm-6">
                     <label htmlFor="image">image</label>
-                    <input
+                    <Input
+                      id="image"
                       type="text"
                       className="form-control"
                       name="image"
                       value={image}
+                      validations={[required]}
                       onChange={(event) => handleImageInput(index, event)}
                     />
                   </div>
@@ -281,12 +288,12 @@ const AddProduct = (props) => {
             <li>
               <label htmlFor="Description">Description</label>
               <br />
-              <textarea
+              <Input
+                id="description"
                 type="textarea"
                 name="description"
                 value={product.description}
                 onChange={handleInputChange}
-                validations={[required]}
               />
             </li>
 

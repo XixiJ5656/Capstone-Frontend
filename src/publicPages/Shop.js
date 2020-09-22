@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import productActions from "../actions/productActions";
 
 import { Link } from "react-router-dom";
-import "./Shop.css";
 
 const Shop = (props) => {
   console.log(props);

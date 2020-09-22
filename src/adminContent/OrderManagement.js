@@ -4,7 +4,7 @@ import orderActions from "../actions/orderActions";
 
 const OrderManagement = (props) => {
   const [submitted, setSubmitted] = useState(false);
-  const { orders, loading, error } = useSelector((state) => state.orderManage);
+  const { orders } = useSelector((state) => state.orderManage);
   const dispatch = useDispatch();
   console.log(orders);
   useEffect(() => {
@@ -20,11 +20,7 @@ const OrderManagement = (props) => {
     dispatch(orderActions.deleteOrderById(id));
   };
 
-  return loading ? (
-    <div>loading...</div>
-  ) : error ? (
-    <div>{error}</div>
-  ) : (
+  return (
     <div className="table-responsive-md mx-3">
       <h1 className="d-flex justify-content-center my-4">Order Management</h1>
       <div className="d-flex justify-content-between my-4">
@@ -42,8 +38,12 @@ const OrderManagement = (props) => {
             <th>Address</th>
             <th>City</th>
             <th>State</th>
-            <th>zip code</th>
+            <th>Zip Code</th>
             <th>Country</th>
+            <th>Payment Method</th>
+            <th>Create Time</th>
+            <th>Update Time</th>
+            <th>Order Items</th>
             <th></th>
             <th></th>
             <th></th>
@@ -59,13 +59,24 @@ const OrderManagement = (props) => {
               <td> {order.state}</td>
               <td>{order.zipcode}</td>
               <td>{order.country}</td>
+              <td>{order.payment}</td>
+              <td>{order.createTime}</td>
+              <td>{order.updateTime}</td>
+              {/* <td>
+                {order.orderItems.map((item) => (
+                  <div>
+                    {item.name},{item.qty}
+                  </div>
+                ))}
+              </td> */}
+              <td>{order.delivered}</td>
 
               <td>
                 <button
                   // onClick={() => handleEdit(order.id)}
                   className="btn btn-outline-info btn-sm"
                 >
-                  Deliver
+                  Delivery
                 </button>
               </td>
 
@@ -74,7 +85,7 @@ const OrderManagement = (props) => {
                   onClick={() => handleEdit(order.id)}
                   className="btn btn-outline-info btn-sm"
                 >
-                  Edit
+                  Check Details & Edit
                 </button>
               </td>
               <td>
@@ -82,7 +93,7 @@ const OrderManagement = (props) => {
                   onClick={() => handleDelete(order.id)}
                   className="btn btn-outline-danger btn-sm"
                 >
-                  delete
+                  Delete
                 </button>
               </td>
             </tr>

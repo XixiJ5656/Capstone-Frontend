@@ -8,29 +8,25 @@ const PlaceOrder = (props) => {
   console.log(props);
 
   const initialOrderState = {
-    id: null,
     username: "",
     address: "",
     city: "",
     state: "",
     zipcode: "",
     country: "",
-
-    // payment: "",
-    // orderItems: [],
-    // delivered: false,
+    payment: "",
+    orderItems: [],
+    delivered: false,
   };
 
   const { cartItems, shipping, payment } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
-  const [order] = useState(initialOrderState);
+  const [order, setOrder] = useState(initialOrderState);
   const [submitted, setSubmitted] = useState(false);
-  const [message, setMessage] = useState("");
   const dispatch = useDispatch();
 
   const submitOrder = (e) => {
     e.preventDefault();
-    setMessage("");
     setSubmitted(false);
     const data = {
       username: user.username,
@@ -39,9 +35,9 @@ const PlaceOrder = (props) => {
       state: shipping.state,
       zipcode: shipping.zipcode,
       country: shipping.country,
+      payment: payment.paymentMethod,
       // orderItems: cartItems,
-      // delivered: order.delivered,
-      // payment: payment,
+      delivered: order.delivered,
     };
     console.log(data);
     dispatch(orderActions.saveOrder(data));
@@ -53,7 +49,7 @@ const PlaceOrder = (props) => {
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <h2>Please Check Your Order Details</h2>
       <div>
-        <h5>Shipping Address</h5>
+        <h4>Shipping Address</h4>
         {shipping ? (
           <div>
             {shipping.address},{shipping.city},{shipping.state},
@@ -61,7 +57,7 @@ const PlaceOrder = (props) => {
           </div>
         ) : (
           <div>
-            <h3>No Address</h3>
+            <p>No Address</p>
 
             <Link to="/shipping">
               <strong>Add Address</strong>
@@ -70,12 +66,12 @@ const PlaceOrder = (props) => {
         )}
       </div>
       <div>
-        <h5>Payment Details</h5>
+        <h4>Payment Details</h4>
         {payment ? (
           payment.paymentMethod
         ) : (
           <div>
-            <h3>No Address</h3>
+            <p>No Payment Details</p>
             <Link to="/payment">
               <strong>Add Payment Information</strong>
             </Link>
@@ -107,9 +103,7 @@ const PlaceOrder = (props) => {
                   </Link>
                 </td>
                 <td>
-                  <Link to={"/product/" + item.id}>
-                    <p>{item.name}</p>
-                  </Link>
+                  <p>{item.name}</p>
                 </td>
 
                 <td>${item.price}</td>

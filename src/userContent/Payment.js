@@ -39,17 +39,13 @@ const Payment = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="page">
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
-      <Form
-        className="d-flex justify-content-center"
-        onSubmit={handleSubmit}
-        ref={form}
-      >
+      <Form className="form" onSubmit={handleSubmit} ref={form}>
         {!successful && (
           <div>
-            <h1>Payment</h1>
-            <div>
+            <h2 className="form-title">Payment</h2>
+            <div className="d-flex">
               <Input
                 type="radio"
                 name="paymentMethod"
@@ -58,7 +54,7 @@ const Payment = (props) => {
               />
               <label>Paypal</label>
             </div>
-            <div>
+            <div className="d-flex">
               <Input
                 type="radio"
                 name="paymentMethod"
@@ -68,9 +64,7 @@ const Payment = (props) => {
               <label>Credit Card</label>
             </div>
             <CheckButton style={{ display: "none" }} ref={checkButton} />
-            <button className="btn btn-info btn-block rounded-pill">
-              Next Step
-            </button>
+            <button className="btn btn-dark btn-block">Next Step</button>
           </div>
         )}
       </Form>

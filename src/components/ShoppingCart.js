@@ -49,7 +49,7 @@ const ShoppingCart = (props) => {
             <th scope="col">Color</th>
             <th scope="col">Size</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Totoal Price For This Item</th>
+            <th scope="col">Totoal/Item</th>
             <th></th>
           </tr>
         </thead>

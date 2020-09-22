@@ -7,15 +7,15 @@ const OrderConfirmation = () => {
   console.log(order);
 
   return (
-    <div>
-      <h2>Order Confimation for {order.username}</h2>
-      <div>
-        <h4>Order Items:</h4>
+    <div className="form">
+      <h2 className="form-title">Order Confirmation </h2>
+
+      <div className="card">
+        <h4 className="form-title">Order Items:</h4>
         <table>
           <thead>
             <tr>
-              <th scope="col">Product</th>
-              <th scope="col">Name</th>
+              <th scope="col">Product Name</th>
               <th scope="col">Price</th>
               <th scope="col">Color</th>
               <th scope="col">Size</th>
@@ -36,7 +36,7 @@ const OrderConfirmation = () => {
             ))}
           </tbody>
         </table>
-        <h3>
+        <h5>
           Subtotal ({" "}
           {cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)} Items)
           : ${" "}
@@ -44,12 +44,16 @@ const OrderConfirmation = () => {
             (a, c) => (parseFloat(a) + parseFloat(c.price * c.qty)).toFixed(2),
             0
           )}
-        </h3>
+        </h5>
       </div>
-      <p>
-        Shipping Address:{order.address},{order.city},{order.state},
-        {order.zipcode},{order.country}
-      </p>
+      <div className="card">
+        <p>
+          Shipping Address:{order.address},{order.city},{order.state},
+          {order.zipcode},{order.country}
+        </p>
+        <p>Payment:{order.payment}</p>
+      </div>
+      <button>Continue Shopping</button>
     </div>
   );
 };

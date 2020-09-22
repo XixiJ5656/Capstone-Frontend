@@ -17,7 +17,7 @@ import AdminBoard from "./adminContent/AdminBoard";
 import OrderManagement from "./adminContent/OrderManagement";
 import AddProduct from "./adminContent/AddProduct";
 
-import Checkout from "./userContent/Checkout";
+import Shipping from "./userContent/Shipping";
 import OrderConfirmation from "./userContent/OrderConfirmation";
 const App = () => {
   const auth = useSelector((state) => state.auth);
@@ -40,7 +40,7 @@ const App = () => {
             <Route path="/order-confirmation" component={OrderConfirmation} />
             <Route path="/payment" component={Payment} />
             <Route path="/placeorder" component={PlaceOrder} />
-            <Route path="/shipping" component={Checkout} />
+            <Route path="/shipping" component={Shipping} />
             <Route path="/product/:id" component={ProductDetails} />
             <Route path="/cart/:id?" component={ShoppingCart} />
             <Route exact path="/shop" component={Shop} />

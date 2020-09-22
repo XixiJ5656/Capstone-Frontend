@@ -93,70 +93,72 @@ const Register = (props) => {
   };
 
   return (
-    <div className="d-flex justify-content-center">
-      <Form className="register-from" onSubmit={handleSubmit} ref={form}>
-        {!successful && (
-          <ul>
-            <li>Register Form</li>
-            <li>
-              <label htmlFor="username">Username</label>
-              <Input
-                type="text"
-                className="form-control"
-                name="username"
-                value={user.username}
-                onChange={handleInputChange}
-                validations={[required, validateUername]}
-              />
-            </li>
-            <li>
-              <label htmlFor="email">Email</label>
-              <Input
-                type="text"
-                className="form-control"
-                name="email"
-                value={user.email}
-                onChange={handleInputChange}
-                validations={[required, validateEmail]}
-              />
-            </li>
-            <li>
-              <label htmlFor="password">Password</label>
-              <Input
-                type="password"
-                className="form-control"
-                name="password"
-                value={user.password}
-                onChange={handleInputChange}
-                validations={[required, validatePassword]}
-              />
-            </li>
-            <li>
-              <button className="btn btn-info btn-block rounded-pill">
-                REGISTER
-              </button>
-            </li>
-          </ul>
-        )}
-
-        {message && (
-          <div>
-            <div
-              className={
-                successful ? "alert alert-success" : "alert alert-danger"
-              }
-              role="alert"
-            >
-              {message}
+    <div className="page">
+      <div className="d-flex justify-content-center">
+        <Form className="form" onSubmit={handleSubmit} ref={form}>
+          {!successful && (
+            <div>
+              <h2 className="form-title">Register Form</h2>
+              <div className="form-group">
+                <Input
+                  type="text"
+                  className="form-control"
+                  name="username"
+                  value={user.username}
+                  placeholder="Username"
+                  onChange={handleInputChange}
+                  validations={[required, validateUername]}
+                />
+              </div>
+              <div className="form-group">
+                <Input
+                  type="text"
+                  className="form-control"
+                  name="email"
+                  value={user.email}
+                  placeholder="Email"
+                  onChange={handleInputChange}
+                  validations={[required, validateEmail]}
+                />
+              </div>
+              <div>
+                <Input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  value={user.password}
+                  placeholder="Password"
+                  onChange={handleInputChange}
+                  validations={[required, validatePassword]}
+                />
+              </div>
+              <div>
+                <button className="btn btn-dark btn-block ">REGISTER</button>
+              </div>
             </div>
+          )}
+
+          {message && (
+            <div>
+              <div
+                className={
+                  successful ? "alert alert-success" : "alert alert-danger"
+                }
+                role="alert"
+              >
+                {message}
+              </div>
+            </div>
+          )}
+          <CheckButton style={{ display: "none" }} ref={checkButton} />
+          <div className="signin-after-register">
+            <div>Already have an account,please sign in here:</div>
+            <Link to="/signin">
+              <button className="btn btn-dark  ">Sign In</button>
+            </Link>
           </div>
-        )}
-        <CheckButton style={{ display: "none" }} ref={checkButton} />
-        <div>ALREADY HAVE AN ACCOUNT, PLEASE SIGN IN HERE</div>
-        <Link to="/signin">
-          <button>Sign In</button>
-        </Link>
-      </Form>
+        </Form>
+      </div>
     </div>
   );
 };

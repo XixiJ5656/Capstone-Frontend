@@ -20,7 +20,7 @@ const Signin = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { isSignedIn, user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   const { message } = useSelector((state) => state.message);
   console.log(message);
@@ -61,66 +61,67 @@ const Signin = (props) => {
       setLoading(false);
     }
   };
-  if (isSignedIn) {
-    return <Redirect to="/user/userInfo" />;
-  }
+
   return (
-    <div className="d-flex justify-content-center">
-      <h2> Sign In</h2>
-      <Form onSubmit={handleSubmit} ref={form}>
-        <ul>
-          <li>
-            <label htmlFor="username">Username</label>
+    <div className="page">
+      <div className="d-flex justify-content-center">
+        <Form className="form" onSubmit={handleSubmit} ref={form}>
+          <h2 className="form-title">Sign In</h2>
+          <div className="form-group">
             <Input
               type="text"
               className="form-control"
               name="username"
               value={username}
+              placeholder="Username"
               onChange={handleUsername}
               validations={[required]}
             />
-          </li>
-          <li>
-            <label htmlFor="password">Password</label>
+          </div>
+          <div className="form-group">
             <Input
               type="password"
               className="form-control"
               name="password"
               value={password}
               onChange={handlePassword}
+              placeholder="Password"
               validations={[required]}
             />
-          </li>
-          <li>
-            <button className="btn btn-primary btn-block" disabled={loading}>
+          </div>
+          <div className="form-group">
+            <button className="btn btn-dark btn-block" disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
               <span>SIGN IN</span>
             </button>
-          </li>
-        </ul>
-        {message && (
-          <div>
-            <div className="alert alert-danger" role="alert">
-              {message}
-            </div>
           </div>
-        )}
-        <CheckButton style={{ display: "none" }} ref={checkButton} />
-        <div>
-          <p>NEW MEMBER PLEASE REGISTER HERE</p>
-          <strong className="btn btn-warning">
-            <Link
-              to={
-                redirect === "/" ? "register" : "register?redirect=" + redirect
-              }
-            >
-              REGISTER
-            </Link>
-          </strong>
-        </div>
-      </Form>
+
+          {message && (
+            <div>
+              <div className="alert alert-danger" role="alert">
+                {message}
+              </div>
+            </div>
+          )}
+          <CheckButton style={{ display: "none" }} ref={checkButton} />
+          <div className="d-flex justify-content-around">
+            <p>New Member? Please Register Here:</p>
+            <strong className="btn btn-light btn-sm">
+              <Link
+                to={
+                  redirect === "/"
+                    ? "register"
+                    : "register?redirect=" + redirect
+                }
+              >
+                REGISTER
+              </Link>
+            </strong>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 };

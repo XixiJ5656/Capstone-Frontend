@@ -9,14 +9,14 @@ import CheckoutSteps from "../components/CheckoutSteps";
 const required = (value) => {
   if (!value) {
     return (
-      <div className="alert alert-warning" role="alert">
+      <div className="alert alert-dark" role="alert">
         This field is required!
       </div>
     );
   }
 };
 
-const Checkout = (props) => {
+const Shipping = (props) => {
   console.log(props);
 
   const initialUserState = {
@@ -57,72 +57,73 @@ const Checkout = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="page">
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <Form
-        className="d-flex justify-content-center"
-        onSubmit={handleSubmit}
-        ref={form}
-      >
+      <Form className="form" onSubmit={handleSubmit} ref={form}>
         {!successful && (
           <div>
-            <h1>Shipping</h1>
-
-            <div>
-              <label htmlFor="address">Address</label>
+            <h2 className="form-title">Shipping</h2>
+            <div className="form-group">
               <Input
                 type="text"
                 name="address"
+                className="form-control"
                 value={shipping.address}
+                placeholder="Address"
                 onChange={handleInputChange}
                 validations={[required]}
               />
             </div>
 
-            <div>
-              <label htmlFor="city">City</label>
+            <div className="form-group">
               <Input
                 type="text"
                 name="city"
+                className="form-control"
                 value={shipping.city}
+                placeholder="City"
                 onChange={handleInputChange}
                 validations={[required]}
               />
             </div>
-            <div>
-              <label htmlFor="state">State</label>
+            <div className="form-group">
               <Input
                 type="text"
                 name="state"
+                className="form-control"
                 value={shipping.state}
+                placeholder="State"
                 onChange={handleInputChange}
                 validations={[required]}
               />
             </div>
-            <div>
-              <label htmlFor="zipcode">Zip Code</label>
+            <div className="form-group">
               <Input
                 type="text"
                 name="zipcode"
+                className="form-control"
                 value={shipping.zipcode}
+                placeholder="Zip Code"
                 onChange={handleInputChange}
                 validations={[required]}
               />
             </div>
-            <div>
-              <label htmlFor="country">Country</label>
+            <div className="form-group">
               <Input
                 type="text"
                 name="country"
+                className="form-control"
                 value={shipping.country}
+                placeholder="Country"
                 onChange={handleInputChange}
                 validations={[required]}
               />
             </div>
             <CheckButton style={{ display: "none" }} ref={checkButton} />
-            <button className="btn btn-info btn-block rounded-pill">
-              Next Step
-            </button>
+            <button className="btn btn-dark btn-block ">Next Step</button>
+            <small id="emailHelp" class="form-text text-muted">
+              We'll never share your address with anyone else.
+            </small>
           </div>
         )}
       </Form>
@@ -130,4 +131,4 @@ const Checkout = (props) => {
   );
 };
 
-export default Checkout;
+export default Shipping;

@@ -19,80 +19,63 @@ const Navigation = () => {
     }
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 200) {
-        setNavBackground(true);
-      } else setNavBackground(false);
-    });
-    return () => {
-      window.removeEventListener("scroll", null);
-    };
-  });
-
   const signOut = () => {
     dispatch(authActions.signout());
+    window.location.reload();
   };
 
   return (
-    <div className="navbar">
-      <nav class="nav flex-column">
-        <ul>
+    <div className="navigation">
+      <nav id="sidebar">
+        <ul className="list-unstyled components">
           <li>
-            <Link to={"/home"}>WY</Link>
+            <Link to={"/home"}>
+              <i class="fas fa-home"></i>XYZ
+            </Link>
           </li>
-          <li className="nav-item dropdown">
-            <a
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              className="nav-link dropdown-toggle"
-              id="navbarDropdown"
-              role="button"
-              href="#"
-            >
-              SHOP
-            </a>
-            <div class="dropdown-menu">
-              <Link class="dropdown-item" to={"/shop"}>
-                Shop
-              </Link>
-              <Link class="dropdown-item" to={"/admin"}>
-                Admin
-              </Link>
-              <Link class="dropdown-item" to={"/user"}>
-                User
-              </Link>
-              <div class="dropdown-divider"></div>
-              <Link class="dropdown-item" to={"/user/cart"}>
-                To my Cart
-              </Link>
+          <li>
+            <Link to={"/shop"}>Shop</Link>
+          </li>
+          <li>
+            <Link to={"/cart"}>Cart</Link>
+          </li>
+
+          {adminBoard && (
+            <li>
+              <NavLink to={"/admin"}>Admin</NavLink>
+            </li>
+          )}
+
+          {currentUser ? (
+            <div className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to={"/user/userinfo"} className="nav-link">
+                  {currentUser.username.toUpperCase()}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/home" className="nav-link" onClick={signOut}>
+                  Sign Out
+                </Link>
+              </li>
             </div>
-          </li>
-          <li>
-            <NavLink to={"/cart"}>CART</NavLink>
-          </li>
+          ) : (
+            <div className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to={"/signin"} className="nav-link">
+                  Sign In
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to={"/register"} className="nav-link">
+                  Register
+                </Link>
+              </li>
+            </div>
+          )}
         </ul>
       </nav>
-
-      {currentUser && (
-        <div>
-          <NavLink to={"/user/userinfo"}>
-            {currentUser.username.toUpperCase()}
-          </NavLink>
-        </div>
-      )}
-      {adminBoard && <NavLink to={"/admin"}>Admin</NavLink>}
-      {!currentUser ? (
-        <div>
-          <NavLink to={"/signin"}>SIGN IN</NavLink>
-          <NavLink to={"/register"}>REGISTER</NavLink>
-        </div>
-      ) : (
-        <Link to="/home" className="nav-link" onClick={signOut}>
-          SIGN OUT
-        </Link>
-      )}
     </div>
   );
 };
