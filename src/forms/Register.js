@@ -11,7 +11,7 @@ import authActions from "../actions/authActions";
 const required = (value) => {
   if (!value) {
     return (
-      <div className="alert alert-warning" role="alert">
+      <div className="alert alert-dark" role="alert">
         This field is required!
       </div>
     );
@@ -21,7 +21,7 @@ const required = (value) => {
 const validateEmail = (value) => {
   if (!isEmail(value)) {
     return (
-      <div className="alert alert-warning" role="alert">
+      <div className="alert alert-dark" role="alert">
         This is not a valid email.
       </div>
     );
@@ -31,7 +31,7 @@ const validateEmail = (value) => {
 const validateUername = (value) => {
   if (value.length < 3 || value.length > 15) {
     return (
-      <div className="alert alert-warning" role="alert">
+      <div className="alert alert-dark" role="alert">
         The username must be between 3 and 15 characters.
       </div>
     );
@@ -41,7 +41,7 @@ const validateUername = (value) => {
 const validatePassword = (value) => {
   if (value.length < 7 || value.length > 30) {
     return (
-      <div className="alert alert-warning" role="alert">
+      <div className="alert alert-dark" role="alert">
         The password must be between 7 and 30 characters.
       </div>
     );

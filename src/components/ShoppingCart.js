@@ -29,7 +29,7 @@ const ShoppingCart = (props) => {
   };
 
   return (
-    <section className="container mb-1">
+    <section className="container mt-5">
       <div className="d-flex justify-content-end mb-5">
         <button
           onClick={() => props.history.push("/shop")}

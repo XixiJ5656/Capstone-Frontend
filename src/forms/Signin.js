@@ -9,7 +9,7 @@ import authActions from "../actions/authActions";
 const required = (value) => {
   if (!value) {
     return (
-      <div className="alert alert-danger" role="alert">
+      <div className="alert alert-dark" role="alert">
         This field is required!
       </div>
     );

@@ -47,8 +47,7 @@ const App = () => {
             {!isSignedIn ? (
               <Route exact path="/signin" component={Signin} />
             ) : (
-              <Route exact path="/user/userinfo" component={Profile} />
-              // <Route exact path="/user/*" component={UserDashBoard} />
+              <Route exact path="/user/profile" component={Profile} />
             )}
 
             <Route exact path="/register" component={Register} />

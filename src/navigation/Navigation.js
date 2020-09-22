@@ -4,9 +4,11 @@ import authServices from "../services/authServices";
 import { useDispatch } from "react-redux";
 import authActions from "../actions/authActions";
 import "../App.css";
-
+import logo from "../logo.svg";
+import user from "../assets/user.svg";
+import cart from "../assets/cart.svg";
+import search from "../assets/search.svg";
 const Navigation = () => {
-  const [navBackground, setNavBackground] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
   const [adminBoard, setAdminBoard] = useState(false);
   const dispatch = useDispatch();
@@ -23,60 +25,48 @@ const Navigation = () => {
     dispatch(authActions.signout());
     window.location.reload();
   };
-
   return (
-    <div className="navigation">
-      <nav id="sidebar">
-        <ul className="list-unstyled components">
-          <li>
-            <Link to={"/home"}>
-              <i class="fas fa-home"></i>XYZ
+    <nav className="navigation">
+      <section className="nav-first">
+        <div>
+          <Link to={"/home"}>
+            {" "}
+            <img src={logo} height="40vmin" alt="logo" />
+          </Link>
+        </div>
+
+        {currentUser ? (
+          <div className="nav-first">
+            <Link to={"/user/userinfo"} className="nav-link">
+              {currentUser.username.toUpperCase()}
             </Link>
-          </li>
-          <li>
-            <Link to={"/shop"}>Shop</Link>
-          </li>
-          <li>
-            <Link to={"/cart"}>Cart</Link>
-          </li>
+            <Link to="/home" className="nav-link" onClick={signOut}>
+              Sign Out
+            </Link>
+          </div>
+        ) : (
+          <div>
+            <img src={search} height="25vmin" alt="search" />
+            <Link to={"/cart"}>
+              <img src={cart} height="25vmin" alt="cart" />
+            </Link>
 
-          {adminBoard && (
-            <li>
-              <NavLink to={"/admin"}>Admin</NavLink>
-            </li>
-          )}
-
-          {currentUser ? (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/user/userinfo"} className="nav-link">
-                  {currentUser.username.toUpperCase()}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/home" className="nav-link" onClick={signOut}>
-                  Sign Out
-                </Link>
-              </li>
-            </div>
-          ) : (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/signin"} className="nav-link">
-                  Sign In
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Register
-                </Link>
-              </li>
-            </div>
-          )}
-        </ul>
-      </nav>
-    </div>
+            <Link to={"/signin"}>
+              <img src={user} height="25vmin" alt="sign in" />
+            </Link>
+          </div>
+        )}
+        {adminBoard && <NavLink to={"/admin"}>Admin</NavLink>}
+      </section>
+      <section className="nav-second">
+        <div>
+          <Link to={"/home"}>Home</Link>
+        </div>
+        <div>
+          <Link to={"/shop"}>Shop</Link>
+        </div>
+      </section>
+    </nav>
   );
 };
 

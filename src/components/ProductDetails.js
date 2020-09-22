@@ -36,22 +36,28 @@ const ProductDetailPage = (props) => {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div className="product-details">
-      <Link to="/shop">
-        <h2> Back to Shop</h2>
-      </Link>
-      <ul className="product-info">
-        <li>{product.name}</li>
-        <li>{product.description}</li>
-      </ul>
-      <div className="product-detail-image">
-        <img src={product.image[0]} alt="product" />
-        <img src={product.image[1]} alt="product" />
-        <img src={product.image[2]} alt="product" />
-        <img src={product.image[3]} alt="product" />
-        <ul className="product-actions">
-          <li>Price:${product.price}</li>
-          <li>
+    <div className="page">
+      <button
+        className="btn btn-dark"
+        onClick={() => props.history.push("/shop")}
+      >
+        Go Back
+      </button>
+      <div className="d-flex justify-content-center">
+        <div className="product-details">
+          <img src={product.image[0]} alt="product" />
+          <img src={product.image[1]} alt="product" />
+          <img src={product.image[2]} alt="product" />
+          <img src={product.image[3]} alt="product" />
+        </div>
+
+        <div className="product-sidebar">
+          <Link to="/shop">
+            <h3>{product.name}</h3>
+          </Link>
+          <p>{product.description}</p>
+          <h5>Price:${product.price}</h5>
+          <p>
             Select Your Size:
             <select value={size} onChange={handleSize}>
               {product.size.map((size) => (
@@ -60,8 +66,8 @@ const ProductDetailPage = (props) => {
                 </option>
               ))}
             </select>
-          </li>
-          <li>
+          </p>
+          <p>
             Select Your Color
             <select value={color} onChange={handleColor}>
               {product.color.map((color) => (
@@ -70,8 +76,8 @@ const ProductDetailPage = (props) => {
                 </option>
               ))}
             </select>
-          </li>
-          <li>
+          </p>
+          <p>
             Qty:
             <select value={qty} onChange={handleQty}>
               {[...Array(product.inventory).keys()].map((index) => (
@@ -80,25 +86,29 @@ const ProductDetailPage = (props) => {
                 </option>
               ))}
             </select>
-          </li>
-        </ul>
-      </div>
-      <div className="preorder-confirmation">
-        <p>size:{size}</p>
-        <p>color:{color}</p>
-        <p>qty:{product.inventory > 0 ? qty : <p>Sold Out</p>}</p>
-      </div>
-      <ul>
-        <li>
-          {product.inventory > 0 && (
-            <button onClick={addToCart}>Add To Cart</button>
-          )}
+          </p>
+          <div className="d-flex ">
+            <p>size:{size}</p>
+            <p>color:{color}</p>
+            <p>qty:{product.inventory > 0 ? qty : <p>Sold Out</p>}</p>
+          </div>
 
-          <Link to="/shop">
-            <button>Continue Shopping</button>
-          </Link>
-        </li>
-      </ul>
+          <div className="d-flex flex-column ">
+            {product.inventory > 0 && (
+              <button className="btn btn-dark mb-5" onClick={addToCart}>
+                Add To Cart
+              </button>
+            )}
+
+            <button
+              className="btn btn-dark "
+              onClick={() => props.history.push("/shop")}
+            >
+              Continue Shopping
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 const AdminBoard = (props) => {
   return (
-    <div className="container">
+    <div className="form">
       <h1>ADMIN DASHBOARD</h1>
       <br />
 
