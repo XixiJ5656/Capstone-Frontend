@@ -116,7 +116,7 @@ const Signin = (props) => {
                     : "register?redirect=" + redirect
                 }
               >
-                REGISTER
+                <button className="btn btn-outline-dark ">Register</button>
               </Link>
             </strong>
           </div>

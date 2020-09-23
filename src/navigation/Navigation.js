@@ -37,22 +37,32 @@ const Navigation = () => {
 
         {currentUser ? (
           <div className="nav-first">
-            <Link to={"/user/userinfo"} className="nav-link">
+            <Link to={"/user/profile"} className="nav-link">
               {currentUser.username.toUpperCase()}
             </Link>
+            <Link to={"/cart"} className="nav-link">
+              <img src={cart} height="25vmin" alt="" />
+            </Link>
             <Link to="/home" className="nav-link" onClick={signOut}>
+              <img src={user} height="25vmin" alt="" />
               Sign Out
             </Link>
           </div>
         ) : (
-          <div>
-            <img src={search} height="25vmin" alt="search" />
-            <Link to={"/cart"}>
+          <div className="nav-first">
+            <img
+              className="nav-link"
+              src={search}
+              height="40vmin"
+              alt="search"
+            />
+            <Link to={"/cart"} className="nav-link">
               <img src={cart} height="25vmin" alt="cart" />
             </Link>
 
-            <Link to={"/signin"}>
-              <img src={user} height="25vmin" alt="sign in" />
+            <Link to={"/signin"} className="nav-link">
+              <img src={user} height="25vmin" alt="" />
+              Sign In
             </Link>
           </div>
         )}
@@ -60,10 +70,14 @@ const Navigation = () => {
       </section>
       <section className="nav-second">
         <div>
-          <Link to={"/home"}>Home</Link>
+          <Link to={"/home"}>
+            <h5>Home</h5>
+          </Link>
         </div>
         <div>
-          <Link to={"/shop"}>Shop</Link>
+          <Link to={"/shop"}>
+            <h5>Shop</h5>
+          </Link>
         </div>
       </section>
     </nav>

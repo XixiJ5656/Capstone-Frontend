@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 const required = (value) => {
   if (!value) {
     return (
-      <div className="alert alert-warning" role="alert">
+      <div className="alert alert-info" role="alert">
         Required Information!
       </div>
     );
@@ -94,6 +94,7 @@ const AddProduct = (props) => {
   };
   const handleImageSave = (event) => {
     setProduct({ ...product, image: imageArr });
+
     event.preventDefault();
   };
 
@@ -125,109 +126,133 @@ const AddProduct = (props) => {
     }
   };
   return (
-    <div>
-      <h1>ADD NEW PRODUCT</h1>
-      <Form className="product-from" onSubmit={handleSubmit} ref={form}>
+    <div className="container mt-5">
+      <div className="d-flex justify-content-between">
+        <h2 className="form-title">ADD NEW PRODUCT</h2>
+        <button
+          className="btn btn-outline-dark mb-5"
+          onClick={() => props.history.push("/admin")}
+        >
+          Back To DashBoard
+        </button>
+      </div>
+
+      <Form onSubmit={handleSubmit} ref={form}>
         {!submitted ? (
-          <ul>
-            <li>
-              <label htmlFor="name">Product Name</label>
+          <div>
+            <div className="form-group">
               <Input
-                id="name"
+                className="form-control"
                 type="text"
                 name="name"
                 value={product.name}
+                placeholder="Product Name"
                 onChange={handleInputChange}
                 validations={[required]}
               />
-            </li>
-            <li>
-              <label htmlFor="inventory">Inventory</label>
+            </div>
+            <div className="form-group">
               <Input
-                id="inventory"
+                className="form-control"
                 type="number"
                 name="inventory"
                 value={product.inventory}
+                placeholder="Inventory"
                 onChange={handleInputChange}
                 validations={[required]}
               />
-            </li>
-            <li>
-              <label htmlFor="type">Type</label>
+            </div>
+            <div className="form-group">
               <Input
-                id="type"
+                className="form-control"
                 type="text"
                 name="type"
                 value={product.type}
+                placeholder="Type"
                 onChange={handleInputChange}
                 validations={[required]}
               />
-            </li>
-            <li>
-              <label htmlFor="price">Price</label>
+            </div>
+            <div className="form-group">
               <Input
-                id="price"
+                className="form-control"
                 type="number"
                 name="price"
                 value={product.price}
+                placeholder="Price"
                 onChange={handleInputChange}
                 validations={[required]}
               />
-            </li>
-            <li>
+            </div>
+
+            <div className="form-group">
               {sizeArr.map((size, index) => (
-                <div key={index}>
-                  <div>
-                    <label htmlFor="size">size</label>
+                <div className="d-flex" key={index}>
+                  <div className="form-group">
                     <Input
-                      id="size"
+                      className="form-control"
                       type="text"
                       name="size"
                       value={size}
+                      placeholder="Size"
                       validations={[required]}
                       onChange={(event) => handleSizeInput(index, event)}
                     />
                   </div>
-                  <div>
+                  <div className="d-flex">
                     <button
+                      className="btn btn-link btn-lg"
+                      disabled={index === 0}
                       type="button"
                       onClick={() => handleRemoveSize(index)}
                     >
                       -
                     </button>
-                    <button type="button" onClick={() => handleAddSize()}>
+                    <button
+                      className="btn btn-link btn-lg"
+                      type="button"
+                      onClick={() => handleAddSize()}
+                    >
                       +
                     </button>
                   </div>
                 </div>
               ))}
+              <button
+                type="button"
+                disabled={!sizeArr[0]}
+                onClick={handleSizeSave}
+                className="btn btn-secondary"
+              >
+                Save
+              </button>
+            </div>
 
-              <button onClick={handleSizeSave}>Save</button>
-            </li>
-            <li>
+            <div className="form-group">
               {colorArr.map((color, index) => (
-                <div key={index}>
-                  <div className="form-group col-sm-6">
-                    <label htmlFor="color">color</label>
+                <div className="d-flex" key={index}>
+                  <div className="form-group">
                     <Input
-                      type="text"
                       className="form-control"
+                      type="text"
                       name="color"
                       value={color}
+                      placeholder="Color"
                       validations={[required]}
                       onChange={(event) => handleColorInput(index, event)}
                     />
                   </div>
-                  <div className="form-group col-sm-2">
+                  <div className="d-flex">
                     <button
-                      className="btn btn-link"
+                      className="btn btn-link btn-lg"
+                      disabled={index === 0}
                       type="button"
                       onClick={() => handleRemoveColor(index)}
                     >
                       -
                     </button>
                     <button
-                      className="btn btn-link"
+                      className="btn btn-link btn-lg"
                       type="button"
                       onClick={() => handleAddColor()}
                     >
@@ -237,37 +262,39 @@ const AddProduct = (props) => {
                 </div>
               ))}
               <button
+                type="button"
+                disabled={!colorArr[0]}
                 onClick={handleColorSave}
-                className="btn btn-primary mr-2"
+                className="btn btn-secondary"
               >
                 Save
               </button>
-            </li>
-            <li>
+            </div>
+            <div className="form-group">
               {imageArr.map((image, index) => (
-                <div key={index}>
-                  <div className="form-group col-sm-6">
-                    <label htmlFor="image">image</label>
+                <div className="d-flex" key={index}>
+                  <div className="form-group">
                     <Input
-                      id="image"
-                      type="text"
                       className="form-control"
+                      type="text"
                       name="image"
                       value={image}
+                      placeholder="Iamge"
                       validations={[required]}
                       onChange={(event) => handleImageInput(index, event)}
                     />
                   </div>
-                  <div className="form-group col-sm-2">
+                  <div className="d-flex">
                     <button
-                      className="btn btn-link"
+                      className="btn btn-link btn-lg"
+                      disabled={index === 0}
                       type="button"
                       onClick={() => handleRemoveImage(index)}
                     >
                       -
                     </button>
                     <button
-                      className="btn btn-link"
+                      className="btn btn-link btn-lg"
                       type="button"
                       onClick={() => handleAddImage()}
                     >
@@ -278,29 +305,33 @@ const AddProduct = (props) => {
               ))}
 
               <button
+                type="button"
+                disabled={!imageArr[0]}
                 onClick={handleImageSave}
-                className="btn btn-primary mr-2"
+                className="btn btn-secondary"
               >
                 Save
               </button>
-            </li>
+            </div>
 
-            <li>
-              <label htmlFor="Description">Description</label>
-              <br />
-              <Input
-                id="description"
-                type="textarea"
-                name="description"
-                value={product.description}
-                onChange={handleInputChange}
-              />
-            </li>
+            <textarea
+              className="form-control mb-5"
+              type="textarea"
+              name="description"
+              value={product.description}
+              placeholder="Description"
+              onChange={handleInputChange}
+            />
 
-            <li>
-              <button className="btn btn-info rounded-pill">Submit</button>
-            </li>
-          </ul>
+            <button
+              className="btn btn-dark btn-block"
+              disabled={
+                !product.size[0] || !product.color[0] || !product.image[0]
+              }
+            >
+              Submit
+            </button>
+          </div>
         ) : (
           message && <div>{message}</div>
         )}

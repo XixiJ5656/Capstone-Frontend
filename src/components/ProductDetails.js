@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import productActions from "../actions/productActions";
 import { Link } from "react-router-dom";
-
+import back from "../assets/back.svg";
 const ProductDetailPage = (props) => {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -38,10 +38,10 @@ const ProductDetailPage = (props) => {
   ) : (
     <div className="page">
       <button
-        className="btn btn-dark"
+        className="btn btn-light"
         onClick={() => props.history.push("/shop")}
       >
-        Go Back
+        <img src={back} height="40vmin" alt="Go Back" />
       </button>
       <div className="d-flex justify-content-center">
         <div className="product-details">

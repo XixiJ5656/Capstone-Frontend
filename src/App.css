@@ -9,14 +9,13 @@
 .nav-first {
   display: flex;
   flex-direction: row;
-  padding: 10px 10px;
+
   text-decoration: none;
   justify-content: space-between;
 }
 .nav-first div {
   margin: 10px;
-  padding: 10px 10px;
-  text-decoration: none;
+  font-size: 12pt;
   position: relative;
   z-index: 100;
   cursor: pointer;
@@ -31,14 +30,12 @@
 
 .nav-second div {
   margin: 30px;
-  padding: 10px 10px;
-  text-decoration: none;
   position: relative;
   z-index: 100;
-  font-size: 15pt;
   color: white;
   cursor: pointer;
 }
+
 .shop-page {
   height: auto;
   width: 100vw;
@@ -87,10 +84,10 @@
 }
 .form {
   height: 50vh;
-  width: 25vw;
+  width: 30;
   position: relative;
   text-align: center;
-  padding-top: 20vh;
+  padding-top: 10vh;
   display: block;
   margin: auto;
 }

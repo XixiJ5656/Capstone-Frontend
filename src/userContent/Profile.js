@@ -5,20 +5,24 @@ const Profile = () => {
   const currentUser = authServices.getCurrentUser();
 
   return (
-    <div className="container">
-      <header className="jumbotron">
-        <h3>
-          <strong>User Name:</strong>
+    <div className="card">
+      <header className="card card-block">
+        <h5>
+          <strong>Username:</strong>
           {currentUser.username}
-        </h3>
-        <ul>
+        </h5>
+
+        <h6>
+          <strong>Email:</strong> {currentUser.email}
+        </h6>
+        <h6>
           {currentUser.roles &&
-            currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-        </ul>
+            currentUser.roles.map((role, index) => (
+              <div key={index}>{role}</div>
+            ))}
+        </h6>
       </header>
-      <p>
-        <strong>Email:</strong> {currentUser.email}
-      </p>
+
       <h3>Order History:</h3>
     </div>
   );

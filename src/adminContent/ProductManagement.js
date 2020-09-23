@@ -56,14 +56,17 @@ const ProductManagement = (props) => {
     <div className="table-responsive-md mx-3">
       <h1 className="d-flex justify-content-center my-4">Product Management</h1>
       <div className="d-flex justify-content-between my-4">
-        <button onClick={() => props.history.push("/admin")}>
+        <button
+          className="btn btn-outline-dark"
+          onClick={() => props.history.push("/admin")}
+        >
           Back To DashBoard
         </button>
         <button
           onClick={() => {
             props.history.push("/admin/add-product");
           }}
-          className="btn btn-info"
+          className="btn btn-outline-dark"
         >
           Add Product
         </button>

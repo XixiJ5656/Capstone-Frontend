@@ -121,7 +121,7 @@ const Register = (props) => {
                   validations={[required, validateEmail]}
                 />
               </div>
-              <div>
+              <div className="form-group">
                 <Input
                   type="password"
                   className="form-control"
@@ -154,7 +154,7 @@ const Register = (props) => {
           <div className="signin-after-register">
             <div>Already have an account,please sign in here:</div>
             <Link to="/signin">
-              <button className="btn btn-dark  ">Sign In</button>
+              <button className="btn btn-outline-dark  ">Sign In</button>
             </Link>
           </div>
         </Form>

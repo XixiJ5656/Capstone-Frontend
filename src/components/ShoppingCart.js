@@ -38,25 +38,24 @@ const ShoppingCart = (props) => {
           Continue Shopping -->
         </button>
       </div>
-      <h2>Shopping Cart</h2>
+      <h3>Shopping Cart</h3>
+      {cartItems.length === 0 ? (
+        <h5 className="text-center">Cart is empty</h5>
+      ) : (
+        <table className="table table-light">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Color</th>
+              <th scope="col">Size</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Totoal/Item</th>
+              <th></th>
+            </tr>
+          </thead>
 
-      <table className="table table-light">
-        <thead>
-          <tr>
-            <th scope="col">Product</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Color</th>
-            <th scope="col">Size</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Totoal/Item</th>
-            <th></th>
-          </tr>
-        </thead>
-
-        {cartItems.length === 0 ? (
-          <h2 className="text-center">Cart is empty</h2>
-        ) : (
           <tbody>
             {cartItems.map((item) => (
               <tr className="product-row" key={item.id}>
@@ -102,10 +101,11 @@ const ShoppingCart = (props) => {
               </tr>
             ))}
           </tbody>
-        )}
-      </table>
+        </table>
+      )}
+
       <div className="d-flex justify-content-between mt-5">
-        <h3>
+        <h4>
           Subtotal ({" "}
           {cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)} Items)
           : ${" "}
@@ -113,7 +113,7 @@ const ShoppingCart = (props) => {
             (a, c) => (parseFloat(a) + parseFloat(c.price * c.qty)).toFixed(2),
             0
           )}
-        </h3>
+        </h4>
 
         <button
           onClick={() =>
