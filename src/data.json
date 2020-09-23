@@ -15,9 +15,9 @@
     "inventory": 20,
     "description": "Knee-length dress in openwork lace made from recycled polyester. Stand-up collar, opening at back of neck with buttons, seam at hips, and flared skirt with asymmetric hem. Long sleeves and overlocked edges at cuffs and hem. Unlined."
   },
-  ,
+
   {
-    "id": 3,
+    "id": 2,
     "name": "Fine-knit Dress",
     "image": [
       "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/72/0d/720d20a0faebc2427e58488c898f7eeb6178e1e0.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[2]&call=url[file:/product/main]",
@@ -33,7 +33,7 @@
     "description": "Soft, fine-knit dress with a V-neck, dropped shoulders, and long sleeves. Short slits at sides. Unlined. Polyester and polyamide content is recycled."
   },
   {
-    "id": 4,
+    "id": 3,
     "name": "Cotton Shirt Dress",
     "image": [
       "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/ea/ed/eaed915ec692c93ce7e55466c0f92e0ec3f7cffd.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
@@ -49,7 +49,7 @@
     "description": "Short, straight-cut shirt dress in woven cotton fabric. Collar, buttons at front, and chest pocket. Dropped shoulders and long sleeves with button at cuffs. Rounded hem, slightly longer at back."
   },
   {
-    "id": 5,
+    "id": 4,
     "name": "Long T-shirt",
     "image": [
       "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/6d/4c/6d4ca128b8c119bf64916de23173781f30b99be2.jpg],origin[dam],category[ladies_tops_shortsleeve],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
@@ -65,7 +65,7 @@
     "description": "Long T-shirt in soft, cotton-blend jersey. Short sleeves with sewn cuffs."
   },
   {
-    "id": 6,
+    "id": 5,
     "name": "Ribbed Wool-blend Cropped Top",
     "image": [
       "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/35/f2/35f22c4b4f2cb65a1cb0054ebfe8b74d07bae4b4.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
@@ -81,7 +81,7 @@
     "description": "Cropped top in a soft, rib-knit wool blend with wide shoulder straps and V-neck."
   },
   {
-    "id": 7,
+    "id": 6,
     "name": "Dress Shorts",
     "image": [
       "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/7a/be/7abef76917cf5b95667710c23e824ebf150d7f52.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
@@ -97,7 +97,7 @@
     "description": "Shorts in woven fabric. High waist with pleats at front, covered elastic at back of waistband, and zip fly with concealed hook-and-eye fasteners. Diagonal side pockets, mock back pockets, and wide legs. Pocket lining made from recycled polyester."
   },
   {
-    "id": 8,
+    "id": 7,
     "name": "Cotton Paper-bag Shorts",
     "image": [
       "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/9d/55/9d557ddf13f2170b8bc9a9161fc1d367fa5d4188.jpg],origin[dam],category[Ladies_shorts_highwaisted],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",

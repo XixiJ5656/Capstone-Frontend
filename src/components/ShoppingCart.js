@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cartActions from "../actions/cartActions";
 import { Link } from "react-router-dom";
-
 const ShoppingCart = (props) => {
   console.log(props);
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ const ShoppingCart = (props) => {
           onClick={() => props.history.push("/shop")}
           className="btn btn-dark btn-sm"
         >
-          Continue Shopping -->
+          Continue Shopping
         </button>
       </div>
       <h3>Shopping Cart</h3>

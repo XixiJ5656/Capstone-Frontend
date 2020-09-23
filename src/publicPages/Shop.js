@@ -21,7 +21,7 @@ const Shop = (props) => {
         {products.map((product) => (
           <div className="product" key={product.id}>
             <Link to={"/product/" + product.id}>
-              <img className="product-image" src={product.image[0]} alt="" />
+              <img src={product.image[0]} alt="" />
             </Link>
             <div className="product-name">
               <Link to={"/product/" + product.id}>{product.name}</Link>

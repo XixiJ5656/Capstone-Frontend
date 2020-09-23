@@ -16,7 +16,6 @@ import ProductManagement from "./adminContent/ProductManagement";
 import AdminBoard from "./adminContent/AdminBoard";
 import OrderManagement from "./adminContent/OrderManagement";
 import AddProduct from "./adminContent/AddProduct";
-
 import Shipping from "./userContent/Shipping";
 import OrderConfirmation from "./userContent/OrderConfirmation";
 const App = () => {
@@ -35,7 +34,6 @@ const App = () => {
             />
             <Route path="/admin/order-management" component={OrderManagement} />
             <Route path="/admin/add-product" component={AddProduct} />
-
             <Route path="/admin" component={AdminBoard} />
             <Route path="/order-confirmation" component={OrderConfirmation} />
             <Route path="/payment" component={Payment} />

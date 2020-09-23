@@ -5,6 +5,7 @@ import CheckButton from "react-validation/build/button";
 import { useDispatch } from "react-redux";
 import cartActions from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
+import next from "../assets/next.svg";
 
 const required = (value) => {
   if (!value) {
@@ -57,12 +58,12 @@ const Shipping = (props) => {
   };
 
   return (
-    <div className="page">
+    <div className="container">
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <Form className="form" onSubmit={handleSubmit} ref={form}>
+      <Form className="card-body" onSubmit={handleSubmit} ref={form}>
         {!successful && (
           <div>
-            <h2 className="form-title">Shipping</h2>
+            <h2 className="form-title mb-3">Shipping</h2>
             <div className="form-group">
               <Input
                 type="text"
@@ -120,7 +121,9 @@ const Shipping = (props) => {
               />
             </div>
             <CheckButton style={{ display: "none" }} ref={checkButton} />
-            <button className="btn btn-dark btn-block ">Next Step</button>
+            <button className="btn btn-outline-secondary">
+              Next Step <img src={next} height="20vmin" alt="" />
+            </button>
             <small id="emailHelp" class="form-text text-muted">
               We'll never share your address with anyone else.
             </small>

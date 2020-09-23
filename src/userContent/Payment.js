@@ -5,7 +5,7 @@ import CheckButton from "react-validation/build/button";
 import { useDispatch } from "react-redux";
 import cartActions from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
-
+import next from "../assets/next.svg";
 const Payment = (props) => {
   console.log(props);
 
@@ -39,9 +39,9 @@ const Payment = (props) => {
   };
 
   return (
-    <div className="page">
+    <div className="container">
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
-      <Form className="form" onSubmit={handleSubmit} ref={form}>
+      <Form className="card-body" onSubmit={handleSubmit} ref={form}>
         {!successful && (
           <div>
             <h2 className="form-title">Payment</h2>
@@ -64,7 +64,10 @@ const Payment = (props) => {
               <label>Credit Card</label>
             </div>
             <CheckButton style={{ display: "none" }} ref={checkButton} />
-            <button className="btn btn-dark btn-block">Next Step</button>
+            <button className="btn btn-outline-secondary ">
+              {" "}
+              Next Step <img src={next} height="20vmin" alt="" />
+            </button>
           </div>
         )}
       </Form>

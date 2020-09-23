@@ -10,14 +10,14 @@ import cart from "../assets/cart.svg";
 import search from "../assets/search.svg";
 const Navigation = () => {
   const [currentUser, setCurrentUser] = useState(false);
-  const [adminBoard, setAdminBoard] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const user = authServices.getCurrentUser();
     if (user) {
       setCurrentUser(user);
-      setAdminBoard(user.roles.includes("ROLE_ADMIN"));
+      setAdmin(user.roles.includes("ADMIN"));
     }
   }, []);
 
@@ -40,6 +40,11 @@ const Navigation = () => {
             <Link to={"/user/profile"} className="nav-link">
               {currentUser.username.toUpperCase()}
             </Link>
+            {admin && (
+              <NavLink className="nav-link" to={"/admin"}>
+                Admin
+              </NavLink>
+            )}
             <Link to={"/cart"} className="nav-link">
               <img src={cart} height="25vmin" alt="" />
             </Link>
@@ -66,7 +71,6 @@ const Navigation = () => {
             </Link>
           </div>
         )}
-        {adminBoard && <NavLink to={"/admin"}>Admin</NavLink>}
       </section>
       <section className="nav-second">
         <div>

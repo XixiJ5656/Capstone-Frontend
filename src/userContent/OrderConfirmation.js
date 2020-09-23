@@ -11,11 +11,11 @@ const OrderConfirmation = (props) => {
   };
 
   return (
-    <div className="page">
+    <div className="card">
       <div className="form">
-        <h2 className="form-title">Order Confirmation </h2>
+        <h2 className="card-title">Order Confirmation </h2>
 
-        <div className="card">
+        <div className="card-body ">
           <h4 className="form-title">Order Items:</h4>
           <table>
             <thead>
@@ -52,7 +52,7 @@ const OrderConfirmation = (props) => {
             )}
           </h5>
         </div>
-        <div className="card">
+        <div className="card-body">
           <p>
             Shipping Address:{order.address},{order.city},{order.state},
             {order.zipcode},{order.country}

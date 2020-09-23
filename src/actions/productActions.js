@@ -41,24 +41,15 @@ const showProductDetail = (id) => async (dispatch) => {
 
 const addProduct = (data) => async (dispatch) => {
   dispatch({ type: ADD_PRODUCT_REQUEST, payload: data });
-  return productServices.addProduct(data).then(
-    (response) => {
-      dispatch({ type: ADD_PRODUCT_SUCCESS, payload: data });
-      dispatch({ type: SET_MESSAGE, payload: response.data.message });
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      dispatch({ type: ADD_PRODUCT_FAIL });
-      dispatch({ type: SET_MESSAGE, payload: message });
-      return Promise.reject();
-    }
-  );
+  try {
+    await axios
+      .post("http://localhost:8080/api/app/products", data)
+      .then((response) => {
+        dispatch({ type: ADD_PRODUCT_SUCCESS, payload: response.data });
+      });
+  } catch (error) {
+    dispatch({ type: ADD_PRODUCT_FAIL, payload: error.message });
+  }
 };
 
 const deleteProductById = (id) => async (dispatch) => {
@@ -69,26 +60,6 @@ const deleteProductById = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: DELETE_PRODUCT_FAIL, payload: error.message });
   }
-
-  //   dispatch({ type: DELETE_PRODUCT_REQUEST, payload: id });
-  //   return productServices.deleteProductById(id).then(
-  //     (response) => {
-  //       dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: id });
-  //       dispatch({ type: SET_MESSAGE, payload: response.data.message });
-  //       return Promise.resolve();
-  //     },
-  //     (error) => {
-  //       const message =
-  //         (error.response &&
-  //           error.response.data &&
-  //           error.response.data.message) ||
-  //         error.message ||
-  //         error.toString();
-  //       dispatch({ type: DELETE_PRODUCT_FAIL });
-  //       dispatch({ type: SET_MESSAGE, payload: message });
-  //       return Promise.reject();
-  //     }
-  //   );
 };
 
 export default {
