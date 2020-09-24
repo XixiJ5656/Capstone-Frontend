@@ -22,23 +22,7 @@ const ProductManagement = (props) => {
 
   const handleEdit = (id) => {
     console.log(id);
-    // productServices.editProduct(data).then(
-    //   (response) => {
-    //     setMessage(response.data.message);
-    //     setSubmitted(true);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     const resMessage =
-    //       (error.response &&
-    //         error.response.data &&
-    //         error.response.data.message) ||
-    //       error.message ||
-    //       error.toString();
-    //     setMessage(resMessage);
-    //     setSubmitted(false);
-    //   }
-    // );
+    dispatch(productActions.deleteProductById(id));
   };
 
   const handleDelete = (id) => {

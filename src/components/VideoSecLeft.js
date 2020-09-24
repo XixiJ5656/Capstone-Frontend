@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const VideoSecLeft = (props) => {
   return (
     <div className="video-section">
@@ -21,6 +21,9 @@ const VideoSecLeft = (props) => {
           kicking myself for not moving on them faster. So long story short –
           always check out ASAP on H&M haha.
         </p>
+        <Link to="/shop">
+          <button className="btn btn-dark mt-5">ENTER</button>
+        </Link>
       </div>
     </div>
   );
