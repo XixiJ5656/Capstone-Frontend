@@ -4,7 +4,10 @@
 video {
   height: 95vh;
 }
-
+.background {
+  max-height: 100%;
+  max-width: 100vw;
+}
 .video-section {
   display: flex;
   flex-direction: row;
@@ -62,11 +65,13 @@ video {
 .nav-second h5 {
   color: black;
   font-weight: 700;
+  font-size: 16pt;
   text-decoration: none;
 }
 .nav-second h5:hover {
   color: darkgray;
   font-weight: 700;
+  font-size: 14pt;
   text-decoration: none;
 }
 .shop-page {
