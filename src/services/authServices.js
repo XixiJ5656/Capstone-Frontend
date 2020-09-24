@@ -1,11 +1,14 @@
 import axios from "axios";
 
 const register = (data) => {
-  return axios.post("/api/auth/register", data);
+  return axios.post(
+    "https://xyz-ecommerce.herokuapp.com/api/auth/register",
+    data
+  );
 };
 const signin = (username, password) => {
   return axios
-    .post("/api/auth/signin", {
+    .post("https://xyz-ecommerce.herokuapp.com/api/auth/signin", {
       username,
       password,
     })

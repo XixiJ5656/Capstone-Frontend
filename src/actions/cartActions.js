@@ -10,7 +10,9 @@ import Cookie from "js-cookie";
 
 const addToCart = (id, qty, size, color) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.get("/api/app/products/" + id);
+    const { data } = await axios.get(
+      "https://xyz-ecommerce.herokuapp.com/api/app/products/" + id
+    );
     dispatch({
       type: ADD_TO_CART,
       payload: {

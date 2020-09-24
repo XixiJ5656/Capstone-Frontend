@@ -11,12 +11,13 @@ import {
 } from "./actionTypes";
 
 import axios from "axios";
-import Cookie from "js-cookie";
 
 const fetchOrders = () => async (dispatch) => {
   dispatch({ type: FETCH_ORDER_REQUEST });
   try {
-    const { data } = await axios.get("/api/app/orders");
+    const { data } = await axios.get(
+      "https://xyz-ecommerce.herokuapp.com/api/app/orders"
+    );
     dispatch({ type: FETCH_ORDER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: FETCH_ORDER_FAIL, payload: error.message });
@@ -26,9 +27,11 @@ const fetchOrders = () => async (dispatch) => {
 const saveOrder = (data) => async (dispatch) => {
   dispatch({ type: SAVE_ORDER_REQUEST, payload: data });
   try {
-    await axios.post("/api/app/orders", data).then((response) => {
-      dispatch({ type: SAVE_ORDER_SUCCESS, payload: response.data });
-    });
+    await axios
+      .post("https://xyz-ecommerce.herokuapp.com/api/app/orders", data)
+      .then((response) => {
+        dispatch({ type: SAVE_ORDER_SUCCESS, payload: response.data });
+      });
   } catch (error) {
     dispatch({ type: SAVE_ORDER_FAIL, payload: error.message });
   }
@@ -37,7 +40,9 @@ const saveOrder = (data) => async (dispatch) => {
 const deleteOrderById = (id) => async (dispatch) => {
   dispatch({ type: DELETE_ORDER_REQUEST, payload: id });
   try {
-    await axios.delete("/api/app/orders/" + id);
+    await axios.delete(
+      "https://xyz-ecommerce.herokuapp.com/api/app/orders/" + id
+    );
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: id });
   } catch (error) {
     dispatch({ type: DELETE_ORDER_FAIL, payload: error.message });

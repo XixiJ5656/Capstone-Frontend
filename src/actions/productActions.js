@@ -56,7 +56,9 @@ const addProduct = (data) => async (dispatch) => {
 const deleteProductById = (id) => async (dispatch) => {
   dispatch({ type: DELETE_PRODUCT_REQUEST, payload: id });
   try {
-    await axios.delete("/api/app/products/" + id);
+    await axios.delete(
+      "https://xyz-ecommerce.herokuapp.com/api/app/products/" + id
+    );
     dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: id });
   } catch (error) {
     dispatch({ type: DELETE_PRODUCT_FAIL, payload: error.message });
