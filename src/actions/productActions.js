@@ -18,7 +18,9 @@ import {
 const fetchProducts = () => async (dispatch) => {
   dispatch({ type: FETCH_PRODUCT_REQUEST });
   try {
-    const { data } = await axios.get("/api/app/products");
+    const { data } = await axios.get(
+      "https://xyz-ecommerce.herokuapp.com//api/app/products"
+    );
     dispatch({ type: FETCH_PRODUCT_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: FETCH_PRODUCT_FAIL, payload: error.message });
