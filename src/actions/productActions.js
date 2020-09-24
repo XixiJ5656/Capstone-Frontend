@@ -19,7 +19,7 @@ const fetchProducts = () => async (dispatch) => {
   dispatch({ type: FETCH_PRODUCT_REQUEST });
   try {
     const { data } = await axios.get(
-      "https://xyz-ecommerce.herokuapp.com//api/app/products"
+      "https://xyz-ecommerce.herokuapp.com/api/app/products"
     );
     dispatch({ type: FETCH_PRODUCT_SUCCESS, payload: data });
   } catch (error) {
@@ -31,7 +31,9 @@ const showProductDetail = (id) => async (dispatch) => {
   dispatch({ type: SHOW_DETAIL_REQUEST, payload: id });
 
   try {
-    const { data } = await axios.get("/api/app/products/" + id);
+    const { data } = await axios.get(
+      "https://xyz-ecommerce.herokuapp.com/api/app/products/" + id
+    );
     dispatch({ type: SHOW_DETAIL_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: SHOW_DETAIL_FAIL, payload: error.message });
@@ -41,9 +43,11 @@ const showProductDetail = (id) => async (dispatch) => {
 const addProduct = (data) => async (dispatch) => {
   dispatch({ type: ADD_PRODUCT_REQUEST, payload: data });
   try {
-    await axios.post("/api/app/products", data).then((response) => {
-      dispatch({ type: ADD_PRODUCT_SUCCESS, payload: response.data });
-    });
+    await axios
+      .post("https://xyz-ecommerce.herokuapp.com/api/app/products", data)
+      .then((response) => {
+        dispatch({ type: ADD_PRODUCT_SUCCESS, payload: response.data });
+      });
   } catch (error) {
     dispatch({ type: ADD_PRODUCT_FAIL, payload: error.message });
   }
