@@ -55,8 +55,8 @@ const ProductDetailPage = (props) => {
           <Link to="/shop">
             <h3>{product.name}</h3>
           </Link>
-          <p>{product.description}</p>
           <h5>Price:${product.price}</h5>
+          <p>{product.description}</p>
           <p>
             Select Your Size:
             <select value={size} onChange={handleSize}>

@@ -1,27 +1,27 @@
 import axios from "axios";
 
 const saveOrder = (data) => {
-  return axios.post("http://localhost:8080/api/app/orders", data);
+  return axios.post("/api/app/orders", data);
 };
 
 const getAllOrders = () => {
-  return axios.get("http://localhost:8080/api/app/orders");
+  return axios.get("/api/app/orders");
 };
 
 const getOrderById = (id) => {
-  return axios.get("http://localhost:8080/api/app/orders" + id);
+  return axios.get("/api/app/orders" + id);
 };
 
 const updateOrderById = (id, data) => {
-  return axios.put("http://localhost:8080/api/app/orders" + id, data);
+  return axios.put("/api/app/orders" + id, data);
 };
 
 const deleteAllOrders = () => {
-  return axios.delete("http://localhost:8080/api/app/orders");
+  return axios.delete("/api/app/orders");
 };
 
 const deleteOrderById = (id) => {
-  return axios.delete("http://localhost:8080/api/app/orders" + id);
+  return axios.delete("/api/app/orders" + id);
 };
 
 export default {

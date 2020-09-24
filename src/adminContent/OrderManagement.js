@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import orderActions from "../actions/orderActions";
 import { Redirect } from "react-router-dom";
+import del from "../assets/del.svg";
+import edit from "../assets/edit.svg";
+import delivery from "../assets/delivery.svg";
 
 const OrderManagement = (props) => {
   // const [submitted, setSubmitted] = useState(false);
@@ -19,9 +22,9 @@ const OrderManagement = (props) => {
   };
 
   const handleDelete = (id) => {
-    console.log(id);
     dispatch(orderActions.deleteOrderById(id));
   };
+
   if (!user || !user.roles.includes("ADMIN")) {
     return <Redirect to="/signin" />;
   } else {
@@ -82,26 +85,26 @@ const OrderManagement = (props) => {
                 <td>
                   <button
                     // onClick={() => handleEdit(order.id)}
-                    className="btn btn-outline-info btn-sm"
+                    className="btn btn-light btn-sm"
                   >
-                    Delivery
+                    <img src={delivery} height="25vmin" alt="" />
                   </button>
                 </td>
 
                 <td>
                   <button
                     onClick={() => handleEdit(order.id)}
-                    className="btn btn-outline-info btn-sm"
+                    className="btn btn-light btn-sm"
                   >
-                    Check Details & Edit
+                    <img src={edit} height="25vmin" alt="" />
                   </button>
                 </td>
                 <td>
                   <button
                     onClick={() => handleDelete(order.id)}
-                    className="btn btn-outline-danger btn-sm"
+                    className="btn btn-light btn-sm"
                   >
-                    Delete
+                    <img src={del} height="25vmin" alt="" />
                   </button>
                 </td>
               </tr>

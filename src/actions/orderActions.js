@@ -5,20 +5,18 @@ import {
   SAVE_ORDER_REQUEST,
   SAVE_ORDER_SUCCESS,
   SAVE_ORDER_FAIL,
-  SET_MESSAGE,
   DELETE_ORDER_FAIL,
   DELETE_ORDER_REQUEST,
   DELETE_ORDER_SUCCESS,
 } from "./actionTypes";
 
-import orderServices from "../services/orderServices";
 import axios from "axios";
 import Cookie from "js-cookie";
 
 const fetchOrders = () => async (dispatch) => {
   dispatch({ type: FETCH_ORDER_REQUEST });
   try {
-    const { data } = await axios.get("http://localhost:8080/api/app/orders");
+    const { data } = await axios.get("/api/app/orders");
     dispatch({ type: FETCH_ORDER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: FETCH_ORDER_FAIL, payload: error.message });
@@ -28,41 +26,18 @@ const fetchOrders = () => async (dispatch) => {
 const saveOrder = (data) => async (dispatch) => {
   dispatch({ type: SAVE_ORDER_REQUEST, payload: data });
   try {
-    await axios
-      .post("http://localhost:8080/api/app/orders", data)
-      .then((response) => {
-        dispatch({ type: SAVE_ORDER_SUCCESS, payload: response.data });
-        console.log(response.data);
-      });
+    await axios.post("/api/app/orders", data).then((response) => {
+      dispatch({ type: SAVE_ORDER_SUCCESS, payload: response.data });
+    });
   } catch (error) {
     dispatch({ type: SAVE_ORDER_FAIL, payload: error.message });
   }
 };
 
-//   return orderServices.saveOrder(data).then(
-//     (response) => {
-//       dispatch({ type: SAVE_ORDER_SUCCESS, payload: data });
-//       dispatch({ type: SET_MESSAGE, payload: response.data.message });
-//       return Promise.resolve();
-//     },
-//     (error) => {
-//       const message =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.message ||
-//         error.toString();
-//       dispatch({ type: SAVE_ORDER_FAIL });
-//       dispatch({ type: SET_MESSAGE, payload: message });
-//       return Promise.reject();
-//     }
-//   );
-// };
-
 const deleteOrderById = (id) => async (dispatch) => {
   dispatch({ type: DELETE_ORDER_REQUEST, payload: id });
   try {
-    await axios.delete("http://localhost:808/api/app/orders/" + id);
+    await axios.delete("/api/app/orders/" + id);
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: id });
   } catch (error) {
     dispatch({ type: DELETE_ORDER_FAIL, payload: error.message });

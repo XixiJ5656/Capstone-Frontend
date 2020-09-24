@@ -12,7 +12,7 @@
     "price": 19.99,
     "size": ["XS", "S", "M", "L", "XL"],
     "color": ["Red", "Black", "White", "Pink", "Blue", "Brown", "Beige"],
-    "inventory": 20,
+    "inventory": 10,
     "description": "Knee-length dress in openwork lace made from recycled polyester. Stand-up collar, opening at back of neck with buttons, seam at hips, and flared skirt with asymmetric hem. Long sleeves and overlocked edges at cuffs and hem. Unlined."
   },
 
@@ -29,7 +29,7 @@
     "price": 34.99,
     "size": ["XS", "S", "M", "L", "XL"],
     "color": ["Red", "Black", "White", "Beige"],
-    "inventory": 20,
+    "inventory": 5,
     "description": "Soft, fine-knit dress with a V-neck, dropped shoulders, and long sleeves. Short slits at sides. Unlined. Polyester and polyamide content is recycled."
   },
   {
@@ -45,7 +45,7 @@
     "price": 34.99,
     "size": ["S", "M", "L"],
     "color": ["Black", "White", "Beige"],
-    "inventory": 20,
+    "inventory": 10,
     "description": "Short, straight-cut shirt dress in woven cotton fabric. Collar, buttons at front, and chest pocket. Dropped shoulders and long sleeves with button at cuffs. Rounded hem, slightly longer at back."
   },
   {
@@ -61,7 +61,7 @@
     "price": 9.99,
     "size": ["S", "M", "L", "XL"],
     "color": ["Black", "White"],
-    "inventory": 20,
+    "inventory": 13,
     "description": "Long T-shirt in soft, cotton-blend jersey. Short sleeves with sewn cuffs."
   },
   {
@@ -77,7 +77,7 @@
     "price": 34.99,
     "size": ["XS", "S", "M", "L"],
     "color": ["Beige"],
-    "inventory": 20,
+    "inventory": 16,
     "description": "Cropped top in a soft, rib-knit wool blend with wide shoulder straps and V-neck."
   },
   {
@@ -109,7 +109,105 @@
     "price": 12.99,
     "size": ["XS", "S", "M", "L", "XL"],
     "color": ["Black", "White", "Brown", "Pink", "Beige"],
-    "inventory": 20,
+    "inventory": 18,
     "description": "Shorts in cotton twill. High paper-bag waist with ruffle trim, elasticized waistband, and zip fly with buttons. Side pockets and wide legs with sewn foldover cuffs."
+  },
+  {
+    "id": 8,
+    "name": "Faux Leather Shorts",
+    "image": [
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/b2/53/b253e212025a992747843596d137c0bc6440b78d.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/db/e7/dbe72b3900dc9fcd9b9ef07570d78ee95da46e6b.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/69/d2/69d24a677697a17a26ba769a84cdca0fb8609a98.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/a1/e0/a1e0d8740e87f0e879b751bfe18a90b86d13c312.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[s],hmver[1]&call=url[file:/product/main]"
+    ],
+    "type": "Shorts",
+    "price": 34.99,
+    "size": ["XS", "S", "M", "L", "XL"],
+    "color": ["Black", "White", "Brown"],
+    "inventory": 12,
+    "description": "Shorts in grained faux leather with pleats at front. High waist, belt with metal D-rings, and zip fly with concealed button and hook-and-eye fastener. Diagonal side pockets and mock back pockets. Lined."
+  },
+  {
+    "id": 9,
+    "name": "Sports Leggings High Waist",
+    "image": [
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/bf/48/bf4829c876b6e1a2f4a88a4349922216496b7c21.jpg],origin[dam],category[ladies_sport_bottoms_trousers],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/50/43/50432a7315db28a25fa2f616f16614684ae89cd4.jpg],origin[dam],category[ladies_sport_bottoms_trousers],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/24/17/24179cdb92ce30c952316b23cf06680d65813b5b.jpg],origin[dam],category[ladies_sport_bottoms_trousers],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/74/47/744730d24655d65b6fecb2c04049972bb55a7193.jpg],origin[dam],category[ladies_sport_bottoms_trousers],type[DESCRIPTIVESTILLLIFE],res[s],hmver[1]&call=url[file:/product/main]"
+    ],
+
+    "type": "Sports",
+    "price": 29.99,
+    "size": ["XS", "S", "M", "L"],
+    "color": ["Oriange", "Brown"],
+    "inventory": 9,
+    "description": "Sports leggings in fast-drying functional fabric. High waist and wide waistband to hold and shape waist. Sculpting seams at back showcase the body’s physique. Concealed key pocket in waistband."
+  },
+
+  {
+    "id": 10,
+    "name": "Shaping Sports Bra",
+    "image": [
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/ff/09/ff09c50339afb655f7f8cf5feb22d485012cfa55.jpg],origin[dam],category[ladies_sport_sportbras],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/2d/16/2d16d6d75345c4f65bc9ffd93cf7e13c0703ed40.jpg],origin[dam],category[ladies_sport_sportbras],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/57/00/570051d2776f3e10713625bc8a0bcf5984741e90.jpg],origin[dam],category[ladies_sport_sportbras],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/62/df/62df8263f30059a5aaf6acfb9898545e4593a61c.jpg],origin[dam],category[ladies_sport_sportbras],type[DESCRIPTIVESTILLLIFE],res[s],hmver[1]&call=url[file:/product/main]"
+    ],
+    "type": "Shorts",
+    "price": 24.99,
+    "size": ["XS", "S", "M", "L"],
+    "color": ["Pink"],
+    "inventory": 12,
+    "description": "Fully-lined sports bra in extra-thick, fast-drying, functional fabric for shaping and sculpting bust. Removable inserts, racer back, and wide, double-layered, scalloped lower edge. Extra firm support."
+  },
+  {
+    "id": 11,
+    "name": "Embrace High Ankle Jeans",
+    "image": [
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/5f/aa/5faabcd84f5d4d6ad349719ea069db65b0fe9603.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/ba/f2/baf2f9a05f74fcc01cab754439d41aa96bc644d6.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/0c/55/0c55709abfa489a38b64b3570966c2e6d893c7ec.jpg],origin[dam],category[],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/3d/23/3d238382a80558aa13bc03813b6b9b9515c386bb.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[s],hmver[1]&call=url[file:/product/main]"
+    ],
+    "type": "Jeans",
+    "price": 39.99,
+    "size": ["XS", "S", "M", "L"],
+    "color": ["Denim Blue", "Black", "Blue-black"],
+    "inventory": 7,
+    "description": "5-pocket, ankle-length jeans in washed, stretch denim. High waist, zip fly with button, and super-skinny legs. Cotton content is partly recycled. Embrace – denim with smart stretch function that molds to body for a comfortable, flattering silhouette."
+  },
+  {
+    "id": 12,
+    "name": "Mom High Ankle Jeans",
+    "image": [
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/e1/94/e194f324f6028fc45bb16ee9e5c837ddad3b6e10.jpg],origin[dam],category[ladies_jeans_mom],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/e7/1f/e71fae0bf31e4951a27654d44dbee5019df0786c.jpg],origin[dam],category[ladies_jeans_mom],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/2e/3a/2e3a26f18022d54ceff2bf1567175b341426c1b1.jpg],origin[dam],category[ladies_jeans_mom],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/f3/10/f3105a12b4e78a9e8114ed45ee8779ac804eb46d.jpg],origin[dam],category[ladies_jeans_mom],type[DESCRIPTIVESTILLLIFE],res[s],hmver[1]&call=url[file:/product/main]"
+    ],
+    "type": "Jeans",
+    "price": 29.99,
+    "size": ["XS", "S", "M", "L"],
+    "color": ["Black", "Light Blue"],
+    "inventory": 12,
+    "description": "5-pocket, ankle-length jeans in washed stretch cotton denim. Extra-high waist and straight legs. Slightly looser fit. Cotton content is partly recycled."
+  },
+  {
+    "id": 14,
+    "name": "High Ankle Jeans",
+    "image": [
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/eb/73/eb73b3670f8ec45450238ce821fcfa4ddc0008ee.jpg],origin[dam],category[ladies_jeans_straight],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/39/8a/398a2756f9a4b652fb734863947b54a653400a22.jpg],origin[dam],category[ladies_jeans_straight],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/47/26/47265a77d1268fd43c937a15df80a7a6b673903d.jpg],origin[dam],category[ladies_jeans_straight],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]",
+      "https://lp2.hm.com/hmgoepprod?set=quality[79],source[/d4/b6/d4b6c3277c5b8718b797c7225b41db882704ae21.jpg],origin[dam],category[ladies_jeans_straight],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]"
+    ],
+    "type": "Shorts",
+    "price": 39.99,
+    "size": ["XS", "M", "L"],
+    "color": ["Light denim blue", "Denim ray"],
+    "inventory": 14,
+    "description": "5-pocket, ankle-length jeans in washed stretch denim with heavily distressed details. Extra-high waist, button fly, and straight legs. Slightly looser fit. Cotton content is partly recycled."
   }
 ]

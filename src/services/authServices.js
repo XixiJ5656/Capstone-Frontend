@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const register = (data) => {
-  return axios.post("http://localhost:8080/api/auth/register", data);
+  return axios.post("/api/auth/register", data);
 };
 const signin = (username, password) => {
   return axios
-    .post("http://localhost:8080/api/auth/signin", {
+    .post("/api/auth/signin", {
       username,
       password,
     })

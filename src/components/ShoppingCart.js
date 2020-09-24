@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cartActions from "../actions/cartActions";
 import { Link } from "react-router-dom";
+import remove from "../assets/remove.svg";
+
 const ShoppingCart = (props) => {
   console.log(props);
   const dispatch = useDispatch();
@@ -37,7 +39,7 @@ const ShoppingCart = (props) => {
           Continue Shopping
         </button>
       </div>
-      <h3>Shopping Cart</h3>
+      <h3 className="shopping-cart">SHOPPING CART</h3>
       {cartItems.length === 0 ? (
         <h5 className="text-center">Cart is empty</h5>
       ) : (
@@ -65,7 +67,7 @@ const ShoppingCart = (props) => {
                 </td>
                 <td>
                   <Link to={"/product/" + item.id}>
-                    <p>{item.name}</p>
+                    <p className="cart-item-name">{item.name}</p>
                   </Link>
                 </td>
 
@@ -91,10 +93,10 @@ const ShoppingCart = (props) => {
                 <td>${(item.price * item.qty).toFixed(2)}</td>
                 <td>
                   <button
-                    className="btn btn-outline-danger btn-sm"
+                    className="btn btn-light btn-sm"
                     onClick={() => removeItem(item.id)}
                   >
-                    REMOVE ITEM
+                    <img src={remove} height="20vmin" alt="" />
                   </button>
                 </td>
               </tr>
@@ -103,9 +105,9 @@ const ShoppingCart = (props) => {
         </table>
       )}
 
-      <div className="d-flex justify-content-between mt-5">
-        <h4>
-          Subtotal ({" "}
+      <div className="d-flex align-items-end flex-column mt-5">
+        <h4 className="subtotal">
+          Subtotal (
           {cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)} Items)
           : ${" "}
           {cartItems.reduce(
@@ -118,7 +120,7 @@ const ShoppingCart = (props) => {
           onClick={() =>
             props.history.push(isSignedIn ? "/shipping" : "/signin")
           }
-          className="btn btn-dark btn-lg"
+          className="btn btn-dark "
           disabled={cartItems.length === 0}
         >
           Check Out

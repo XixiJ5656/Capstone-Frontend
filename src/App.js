@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "./navigation/Navigation";
+import Navigation from "./components/Navigation";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./publicPages/Home";
 import Shop from "./publicPages/Shop";
@@ -13,11 +13,13 @@ import Payment from "./userContent/Payment";
 import PlaceOrder from "./userContent/PlaceOrder";
 
 import ProductManagement from "./adminContent/ProductManagement";
-import AdminBoard from "./adminContent/AdminBoard";
+import AdminDashBoard from "./adminContent/AdminDashBoard";
 import OrderManagement from "./adminContent/OrderManagement";
 import AddProduct from "./adminContent/AddProduct";
 import Shipping from "./userContent/Shipping";
 import OrderConfirmation from "./userContent/OrderConfirmation";
+import "react-app-polyfill/stable";
+
 const App = () => {
   const auth = useSelector((state) => state.auth);
   const { isSignedIn } = auth;
@@ -34,7 +36,7 @@ const App = () => {
             />
             <Route path="/admin/order-management" component={OrderManagement} />
             <Route path="/admin/add-product" component={AddProduct} />
-            <Route path="/admin" component={AdminBoard} />
+            <Route path="/admin" component={AdminDashBoard} />
             <Route path="/order-confirmation" component={OrderConfirmation} />
             <Route path="/payment" component={Payment} />
             <Route path="/placeorder" component={PlaceOrder} />

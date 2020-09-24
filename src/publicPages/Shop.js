@@ -23,10 +23,12 @@ const Shop = (props) => {
             <Link to={"/product/" + product.id}>
               <img src={product.image[0]} alt="" />
             </Link>
-            <div className="product-name">
-              <Link to={"/product/" + product.id}>{product.name}</Link>
+            <div>
+              <Link to={"/product/" + product.id}>
+                <p className="product-name">{product.name}</p>
+              </Link>
             </div>
-            <strong>{product.price}</strong>
+            <strong>${product.price}</strong>
           </div>
         ))}
       </div>

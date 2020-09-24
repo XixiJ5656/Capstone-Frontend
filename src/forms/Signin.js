@@ -23,7 +23,7 @@ const Signin = (props) => {
   const { user } = useSelector((state) => state.auth);
 
   const { message } = useSelector((state) => state.message);
-  console.log(message);
+
   const dispatch = useDispatch();
   const form = useRef();
   const checkButton = useRef();
@@ -53,7 +53,7 @@ const Signin = (props) => {
     form.current.validateAll();
     if (checkButton.current.context._errors.length === 0) {
       dispatch(authActions.signin(username, password))
-        .then(() => {
+        .then((response) => {
           window.location.reload();
         })
         .catch(() => setLoading(false));

@@ -59,11 +59,11 @@ const Shipping = (props) => {
 
   return (
     <div className="container">
-      <CheckoutSteps step1 step2></CheckoutSteps>
+      <CheckoutSteps step1></CheckoutSteps>
       <Form className="card-body" onSubmit={handleSubmit} ref={form}>
         {!successful && (
           <div>
-            <h2 className="form-title mb-3">Shipping</h2>
+            <h2 className="form-title mb-5">Shipping</h2>
             <div className="form-group">
               <Input
                 type="text"
@@ -121,12 +121,14 @@ const Shipping = (props) => {
               />
             </div>
             <CheckButton style={{ display: "none" }} ref={checkButton} />
-            <button className="btn btn-outline-secondary">
-              Next Step <img src={next} height="20vmin" alt="" />
-            </button>
-            <small id="emailHelp" class="form-text text-muted">
-              We'll never share your address with anyone else.
-            </small>
+            <div className="d-flex align-items-center flex-column mt-5">
+              <button className="btn btn-outline-secondary">
+                Next Step <img src={next} height="20vmin" alt="" />
+              </button>
+              <small id="emailHelp" class="form-text text-muted">
+                We'll never share your address with anyone else.
+              </small>
+            </div>
           </div>
         )}
       </Form>

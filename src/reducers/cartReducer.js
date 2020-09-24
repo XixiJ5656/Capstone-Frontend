@@ -3,6 +3,7 @@ import {
   REMOVE_FROM_CART,
   SAVE_SHIPPING,
   SAVE_PAYMENT,
+  CLEAR_CART,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -28,6 +29,11 @@ const cartReducer = (state = initialState, action) => {
       return {
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
       };
+    case CLEAR_CART:
+      return {
+        cartItems: [],
+      };
+
     case SAVE_SHIPPING:
       return { ...state, shipping: action.payload };
     case SAVE_PAYMENT:

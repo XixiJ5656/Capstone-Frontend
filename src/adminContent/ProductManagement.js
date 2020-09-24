@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import productActions from "../actions/productActions";
+import del from "../assets/del.svg";
+import edit from "../assets/edit.svg";
 import Pagination from "../components/Pagination";
 // import paginate from "../utils/paginate";
 
@@ -120,17 +122,17 @@ const ProductManagement = (props) => {
                 <td>
                   <button
                     onClick={() => handleEdit(product)}
-                    className="btn btn-outline-info btn-sm"
+                    className="btn btn-light btn-sm"
                   >
-                    Edit
+                    <img src={edit} height="25vmin" alt="" />
                   </button>
                 </td>
                 <td>
                   <button
                     onClick={() => handleDelete(product.id)}
-                    className="btn btn-outline-danger btn-sm"
+                    className="btn btn-light btn-sm"
                   >
-                    Delete
+                    <img src={del} height="25vmin" alt="" />
                   </button>
                 </td>
               </tr>

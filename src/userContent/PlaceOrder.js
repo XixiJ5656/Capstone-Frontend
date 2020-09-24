@@ -39,39 +39,39 @@ const PlaceOrder = (props) => {
       // orderItems: cartItems,
       delivered: order.delivered,
     };
-    console.log(data);
     dispatch(orderActions.saveOrder(data));
+
     props.history.push("/order-confirmation");
   };
 
   return (
     <section className="container mb-1">
-      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
+      <CheckoutSteps step1 step2 step3></CheckoutSteps>
       <h2>Please Check Your Order Details</h2>
-      <div>
-        <h4>Shipping Address</h4>
+      <div className="card-body">
+        <h5>Shipping Address</h5>
         {shipping ? (
-          <div>
+          <div className="card-body">
             {shipping.address},{shipping.city},{shipping.state},
             {shipping.zipcode},{shipping.country}
           </div>
         ) : (
           <div>
-            <p>No Address</p>
-
-            <Link to="/shipping">
-              <strong>Add Address</strong>
-            </Link>
+            <p className="shipping-payment">No Address</p>
+            <strong>
+              <Link to="/shipping">Add Address</Link>
+            </strong>
           </div>
         )}
       </div>
-      <div>
-        <h4>Payment Details</h4>
+
+      <div className="card-body">
+        <h5>Payment Details</h5>
         {payment ? (
-          payment.paymentMethod
+          <div className="card-body">{payment.paymentMethod}</div>
         ) : (
           <div>
-            <p>No Payment Details</p>
+            <p className="shipping-payment">No Payment Details</p>
             <Link to="/payment">
               <strong>Add Payment Information</strong>
             </Link>
