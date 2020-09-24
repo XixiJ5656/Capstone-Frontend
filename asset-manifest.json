@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/xyz-ecommerce-react/static/css/main.abb7f051.chunk.css",
-    "main.js": "/xyz-ecommerce-react/static/js/main.090a9b36.chunk.js",
-    "main.js.map": "/xyz-ecommerce-react/static/js/main.090a9b36.chunk.js.map",
+    "main.js": "/xyz-ecommerce-react/static/js/main.6b1c7a33.chunk.js",
+    "main.js.map": "/xyz-ecommerce-react/static/js/main.6b1c7a33.chunk.js.map",
     "runtime-main.js": "/xyz-ecommerce-react/static/js/runtime-main.d2298612.js",
     "runtime-main.js.map": "/xyz-ecommerce-react/static/js/runtime-main.d2298612.js.map",
     "static/css/2.5dddc201.chunk.css": "/xyz-ecommerce-react/static/css/2.5dddc201.chunk.css",
-    "static/js/2.a8f68f43.chunk.js": "/xyz-ecommerce-react/static/js/2.a8f68f43.chunk.js",
-    "static/js/2.a8f68f43.chunk.js.map": "/xyz-ecommerce-react/static/js/2.a8f68f43.chunk.js.map",
+    "static/js/2.0eac129d.chunk.js": "/xyz-ecommerce-react/static/js/2.0eac129d.chunk.js",
+    "static/js/2.0eac129d.chunk.js.map": "/xyz-ecommerce-react/static/js/2.0eac129d.chunk.js.map",
     "index.html": "/xyz-ecommerce-react/index.html",
-    "precache-manifest.35bcb476779549d5fbaf98f316ca52aa.js": "/xyz-ecommerce-react/precache-manifest.35bcb476779549d5fbaf98f316ca52aa.js",
+    "precache-manifest.8075dd66b729e4f0e67101760867cb72.js": "/xyz-ecommerce-react/precache-manifest.8075dd66b729e4f0e67101760867cb72.js",
     "service-worker.js": "/xyz-ecommerce-react/service-worker.js",
     "static/css/2.5dddc201.chunk.css.map": "/xyz-ecommerce-react/static/css/2.5dddc201.chunk.css.map",
     "static/css/main.abb7f051.chunk.css.map": "/xyz-ecommerce-react/static/css/main.abb7f051.chunk.css.map",
-    "static/js/2.a8f68f43.chunk.js.LICENSE.txt": "/xyz-ecommerce-react/static/js/2.a8f68f43.chunk.js.LICENSE.txt",
+    "static/js/2.0eac129d.chunk.js.LICENSE.txt": "/xyz-ecommerce-react/static/js/2.0eac129d.chunk.js.LICENSE.txt",
     "static/media/adminhub.svg": "/xyz-ecommerce-react/static/media/adminhub.287c511b.svg",
     "static/media/back.svg": "/xyz-ecommerce-react/static/media/back.f0ef68a2.svg",
     "static/media/cart.svg": "/xyz-ecommerce-react/static/media/cart.6be8d514.svg",
@@ -37,8 +37,8 @@
   "entrypoints": [
     "static/js/runtime-main.d2298612.js",
     "static/css/2.5dddc201.chunk.css",
-    "static/js/2.a8f68f43.chunk.js",
+    "static/js/2.0eac129d.chunk.js",
     "static/css/main.abb7f051.chunk.css",
-    "static/js/main.090a9b36.chunk.js"
+    "static/js/main.6b1c7a33.chunk.js"
   ]
 }
