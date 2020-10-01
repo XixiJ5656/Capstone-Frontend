@@ -1,6 +1,6 @@
      #xyz-ecommerce site:
 
-     this is women clothing ecommerce size. Back End is deployed on Heroku, front end is deployed on firebase. Link is :https://xyz-ecommerce.web.app
+     this is women clothing ecommerce size. Back End is deployed on Heroku, front end is deployed on https://xixij5656.github.io/xyz-ecommerce-react/, please click HOME or SHOP tap, it will take some time to load backend data.
 
      * Tech used in this app:
 
