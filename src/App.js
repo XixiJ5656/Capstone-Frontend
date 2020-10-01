@@ -51,7 +51,7 @@ const App = () => {
             )}
 
             <Route exact path="/register" component={Register} />
-            <Route exact path={["/", "/home"]} component={Home} />
+            <Route exact path="/" component={Home} />
           </Switch>
         </div>
       </div>
